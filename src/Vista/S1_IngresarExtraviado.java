@@ -18,6 +18,10 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
         
         this.setLocationRelativeTo(null);
         this.setResizable(false);
+        
+        radio_noAplica.setSelected(true);
+        habilitar(false);
+        txt_rutSolicitante.requestFocus();
     }
 
     /**
@@ -116,25 +120,22 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
                     .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_emailSolicitante)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_telefonoSolicitante, javax.swing.GroupLayout.DEFAULT_SIZE, 125, Short.MAX_VALUE)
-                            .addComponent(txt_rutSolicitante)
-                            .addComponent(txt_nombreSolicitante))
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel13, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_apellidoSolicitante, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(5, 5, 5)
-                                .addComponent(txt_movilSolicitante, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(txt_emailSolicitante))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(txt_telefonoSolicitante)
+                            .addComponent(txt_nombreSolicitante)
+                            .addComponent(txt_rutSolicitante))
+                        .addGap(53, 53, 53)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_movilSolicitante)
+                            .addComponent(txt_apellidoSolicitante))))
+                .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -177,15 +178,30 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
 
         buttonGroup1.add(radio_rut);
         radio_rut.setText("Rut");
+        radio_rut.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio_rutActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(radio_pasaporte);
         radio_pasaporte.setText("Pasaporte");
+        radio_pasaporte.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio_pasaporteActionPerformed(evt);
+            }
+        });
 
         buttonGroup1.add(radio_noAplica);
         radio_noAplica.setText("No aplica");
         radio_noAplica.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 radio_noAplicaStateChanged(evt);
+            }
+        });
+        radio_noAplica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radio_noAplicaActionPerformed(evt);
             }
         });
 
@@ -211,49 +227,47 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addGap(12, 12, 12))
+                                .addComponent(radio_rut, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(radio_pasaporte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(18, 18, 18)
+                                .addComponent(radio_noAplica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addGap(231, 231, 231))
+                            .addComponent(jLabel6)
+                            .addComponent(jScrollPane1))
+                        .addGap(10, 10, 10))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jLabel9)
+                                    .addComponent(jLabel8)
+                                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel3Layout.createSequentialGroup()
-                                .addComponent(txt_colorPiel, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_colorOjos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(txt_apellidoP_Extraviado, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_apellidoM_Extraviado, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(txt_nombreExtraviado))
-                                .addGap(216, 216, 216))
-                            .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(txt_colorPelo, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txt_altura, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(txt_radioOption)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(radio_rut)
-                        .addGap(18, 18, 18)
-                        .addComponent(radio_pasaporte)
-                        .addGap(18, 18, 18)
-                        .addComponent(radio_noAplica))
-                    .addComponent(jLabel6)
-                    .addComponent(jScrollPane1))
-                .addContainerGap(26, Short.MAX_VALUE))
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(txt_colorPiel)
+                                    .addComponent(txt_apellidoP_Extraviado)
+                                    .addComponent(txt_apellidoM_Extraviado)
+                                    .addComponent(txt_nombreExtraviado, javax.swing.GroupLayout.Alignment.TRAILING)
+                                    .addComponent(txt_colorPelo, javax.swing.GroupLayout.Alignment.TRAILING))
+                                .addGap(16, 16, 16)
+                                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txt_altura))
+                                    .addGroup(jPanel3Layout.createSequentialGroup()
+                                        .addComponent(jLabel11, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(txt_colorOjos))))
+                            .addComponent(txt_radioOption))
+                        .addContainerGap())))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -319,12 +333,11 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(234, 234, 234)
-                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jPanel3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -369,6 +382,8 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
+        
+        limpiar();
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void radio_noAplicaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_radio_noAplicaStateChanged
@@ -381,15 +396,59 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
                 || txt_apellidoSolicitante.getText().trim().equals("") || txt_telefonoSolicitante.getText().trim().equals("")
                 || txt_movilSolicitante.getText().trim().equals("") || txt_emailSolicitante.getText().trim().equals("")
                 ) {
-            JOptionPane.showMessageDialog(rootPane, "Debe Completar todos los campos del Solicitante");
+            JOptionPane.showMessageDialog(rootPane, "Debe completar todos los campos del Solicitante");
         }else if (!Controlador.CtrlIngExtraviado.validarRut(txt_rutSolicitante.getText().trim())) {
-            JOptionPane.showMessageDialog(rootPane, "Rut Incorrecto");
+            JOptionPane.showMessageDialog(rootPane, "Rut incorrecto");
             txt_rutSolicitante.requestFocus();
         }else if (radio_noAplica.isSelected()==false || radio_pasaporte.isSelected()==false||radio_rut.isSelected()==false){
-            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar una opcion");
+            JOptionPane.showMessageDialog(rootPane, "Debe seleccionar una opción");
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void radio_pasaporteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_pasaporteActionPerformed
+        // TODO add your handling code here:
+        habilitar(true);
+    }//GEN-LAST:event_radio_pasaporteActionPerformed
+
+    private void radio_rutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_rutActionPerformed
+        // TODO add your handling code here:
+        habilitar(true);
+    }//GEN-LAST:event_radio_rutActionPerformed
+
+    private void radio_noAplicaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_noAplicaActionPerformed
+        // TODO add your handling code here:
+        habilitar(false);
+    }//GEN-LAST:event_radio_noAplicaActionPerformed
+
+    //Limpiar campos de la pantalla Ingresar Extraviado
+    public void limpiar(){
+        txt_rutSolicitante.requestFocus();
+        
+        //Limpia campos del Solicitante
+        txt_rutSolicitante.setText("");
+        txt_nombreSolicitante.setText("");
+        txt_apellidoSolicitante.setText("");
+        txt_telefonoSolicitante.setText("");
+        txt_movilSolicitante.setText("");
+        txt_emailSolicitante.setText("");
+        
+        //Limpia campos del Extraviado
+        habilitar(false);
+        txt_radioOption.setText("");
+        txt_nombreExtraviado.setText("");
+        txt_apellidoP_Extraviado.setText("");
+        txt_apellidoM_Extraviado.setText("");
+        txt_colorPelo.setText("");
+        txt_colorPiel.setText("");
+        txt_colorOjos.setText("");
+        txt_altura.setText("");
+        textarea_comentario.setText("");
+    }
+    
+    void habilitar(boolean sw){
+        txt_radioOption.setEnabled(sw);
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JButton jButton1;

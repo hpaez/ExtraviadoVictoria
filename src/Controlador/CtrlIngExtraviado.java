@@ -5,11 +5,33 @@
  */
 package Controlador;
 
+import Modelo.Extraviado;
+import Modelo.ExtraviadoDAO;
+import Vista.S1_IngresarExtraviado;
+import java.awt.event.*;
 /**
  *
  * @author DerKow
  */
-public class CtrlIngExtraviado {
+public class CtrlIngExtraviado implements ActionListener{
+    S1_IngresarExtraviado vistaIngreso = new S1_IngresarExtraviado();
+    ExtraviadoDAO modeloIngreso = new ExtraviadoDAO();
+    Extraviado extraviado = new Extraviado();
+    
+    public CtrlIngExtraviado(S1_IngresarExtraviado vistaIngreso, ExtraviadoDAO modeloIngreso){
+        this.vistaIngreso = vistaIngreso;
+        this.modeloIngreso = modeloIngreso;
+        this.vistaIngreso.jButton1.addActionListener(this);
+    }
+    
+    public void IngresarExtraviado(){
+        
+    }
+    
+    public void actionPerformed(ActionEvent e){
+        
+    }
+    
     public static boolean validarRut(String rut) {
 
         boolean validacion = false;
