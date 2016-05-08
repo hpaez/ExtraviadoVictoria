@@ -10,13 +10,12 @@ import Vista.S1_IngresarExtraviado;
 import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.event.ChangeEvent;
 
 /**
  *
  * @author DerKow
  */
-public class CtrlIngExtraviado implements ActionListener{
+public class CtrlIngExtraviado implements ActionListener,KeyListener {
     S1_IngresarExtraviado vistaIngreso;
     Extraviado extraviado;
     
@@ -28,6 +27,9 @@ public class CtrlIngExtraviado implements ActionListener{
         this.vistaIngreso.radio_noAplica.addActionListener(this);
         this.vistaIngreso.radio_rut.addActionListener(this);
         this.vistaIngreso.radio_pasaporte.addActionListener(this);
+        //key listeners
+        this.vistaIngreso.txt_telefonoSolicitante.addKeyListener(this);
+        this.vistaIngreso.txt_movilSolicitante.addKeyListener(this);
     }
     
     public void Iniciar() {
@@ -77,4 +79,45 @@ public class CtrlIngExtraviado implements ActionListener{
         
     }
 
+    @Override
+    public void keyTyped(KeyEvent e) {
+        //solo numeros para campo telefono y movil
+        try{
+            if (vistaIngreso.txt_telefonoSolicitante == e.getSource() 
+                    || vistaIngreso.txt_movilSolicitante == e.getSource()) {
+            try{
+                if (!(Character.isDigit(e.getKeyChar())))
+                e.consume();        
+            }catch(Exception ex){
+                //
+            }
+            }
+        }catch (Exception ex){
+            
+        }    
+        //limite de caracteres
+//        if (_campo.length() == _limitecaracteres) {
+//            e.consume();
+//        }
+    }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        try {
+            
+        }catch(Exception ex){
+            
+        }    
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        try {
+            
+        }catch(Exception ex){
+            
+        }
+    }
+    
+    
 }
