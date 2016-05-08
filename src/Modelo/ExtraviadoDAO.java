@@ -6,6 +6,7 @@
 package Modelo;
 
 import java.sql.*;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -47,17 +48,16 @@ public class ExtraviadoDAO {
         return rptRegistro;
     }
     
-    public Extraviado verificaExtraviado(String id) {
-        Extraviado extraviado=null;
+    public ExtraviadoVO verificaExtraviado(String id) {
+        ExtraviadoVO extraviado=null;
         Connection accesoDB = conexion.getConexion();
         try {
-            
             PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM extraviado WHERE IDENTIFICACIONEXTRAVIAD=?");
             ps.setString(1, id);
             
             ResultSet rs = ps.executeQuery();
             if(rs.next()){
-               extraviado = new Extraviado();
+               extraviado = new ExtraviadoVO();
                extraviado.setId_extraviado(rs.getInt(1));
                extraviado.setId_persona(rs.getString(2));
                extraviado.setIdtentificacion_ex(rs.getString(3));
@@ -77,21 +77,28 @@ public class ExtraviadoDAO {
         return extraviado;
     }
     
-    public ArrayList<Persona> listPersona() {
+    public ArrayList<ExtraviadoVO> listPersona() {
         ArrayList listaPersona = new ArrayList();
-        Persona persona;
+        ExtraviadoVO extraviado;
         try {
             Connection acceDB = conexion.getConexion();
-            PreparedStatement ps = acceDB.prepareStatement("select * from persona");
+            PreparedStatement ps = acceDB.prepareStatement("SELECT * FROM extraviado");
             ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                persona = new Persona();
-                persona.setDni(rs.getString(1));
-                persona.setApellidos(rs.getString(2));
-                persona.setNombres(rs.getString(3));
-                persona.setFechaN(rs.getString(4));
-                persona.setLugarN(rs.getString(5));
-                listaPersona.add(persona);
+                extraviado = new ExtraviadoVO();
+                extraviado.setId_extraviado(rs.getInt(1));
+                extraviado.setId_persona(rs.getString(2));
+                extraviado.setIdtentificacion_ex(rs.getString(3));
+                extraviado.setNombre_ex(rs.getString(4));
+                extraviado.setApellido_ex(rs.getString(5));
+                extraviado.setCabello_ex(rs.getString(6));
+                extraviado.setPiel_ex(rs.getString(7));
+                extraviado.setOjos_ex(rs.getString(8));
+                extraviado.setMedicion_ex(rs.getDouble(9));
+                extraviado.setContextura_ex(rs.getString(10));
+                extraviado.setPeso_ex(rs.getInt(11));
+                extraviado.setComentario_ex(rs.getString(12));
+                listaPersona.add(extraviado);
             }
         } catch (Exception e) {
         }
@@ -111,11 +118,11 @@ public class ExtraviadoDAO {
         return filAfectadas;
     }
     
-    public int editarExtraviado(String identificacion_ex, String nombre_ex, String apellido_ex, String cabello_ex, String piel_ex, String ojo_ex, Double medicion_ex, String contextura_ex, int peso_ex, String comentario_ex) {
+    public int editarExtraviado(String id_extraviado, String identificacion_ex, String nombre_ex, String apellido_ex, String cabello_ex, String piel_ex, String ojo_ex, Double medicion_ex, String contextura_ex, int peso_ex, String comentario_ex) {
         int filAfectadas=0;
         try {
             Connection accesoDB = conexion.getConexion();
-            PreparedStatement ps = accesoDB.prepareStatement("UPDATE extraviado SET IDEXTRAVIADO=?,IDPERSONA=?,IDENTIFICACIONEXTRAVIAD=?,NOMBREEXTRAVIADO=?,APELLIDOSEXTRAVIADO=?,COLORCABELLOEXTRAVIADO=?,COLORPIELEXTRAVIADO=?,COLOROJOSEXTRAVIADO=?,MEDICIONEXTRAVIADO=?,CONTEXTURAEXTRAVIADO=?,PESOEXTRAVIADO=?,COMENTARIOEXTRAVIADO=? WHERE 1");
+            PreparedStatement ps = accesoDB.prepareStatement("UPDATE extraviado SET IDEXTRAVIADO=?,IDPERSONA=?,IDENTIFICACIONEXTRAVIAD=?,NOMBREEXTRAVIADO=?,APELLIDOSEXTRAVIADO=?,COLORCABELLOEXTRAVIADO=?,COLORPIELEXTRAVIADO=?,COLOROJOSEXTRAVIADO=?,MEDICIONEXTRAVIADO=?,CONTEXTURAEXTRAVIADO=?,PESOEXTRAVIADO=?,COMENTARIOEXTRAVIADO=? WHERE IDEXTRAVIADO=?");
             ps.setString(1, identificacion_ex);
             ps.setString(2, nombre_ex);
             ps.setString(3, apellido_ex);
@@ -126,6 +133,7 @@ public class ExtraviadoDAO {
             ps.setString(8, contextura_ex);
             ps.setInt(9, peso_ex);
             ps.setString(10, comentario_ex);
+            ps.setString(11, id_extraviado);
             filAfectadas = ps.executeUpdate();
         } catch (Exception e) {
         }
