@@ -10,11 +10,13 @@ import Vista.S1_IngresarExtraviado;
 import java.awt.event.*;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+import javax.swing.event.ChangeEvent;
+
 /**
  *
  * @author DerKow
  */
-public class CtrlIngExtraviado implements ActionListener {
+public class CtrlIngExtraviado implements ActionListener{
     S1_IngresarExtraviado vistaIngreso;
     Extraviado extraviado;
     
@@ -23,6 +25,9 @@ public class CtrlIngExtraviado implements ActionListener {
         this.extraviado = modeloIngreso;
         this.vistaIngreso.btn_ingresar.addActionListener(this);
         this.vistaIngreso.btn_limpiar.addActionListener(this);
+        this.vistaIngreso.radio_noAplica.addActionListener(this);
+        this.vistaIngreso.radio_rut.addActionListener(this);
+        this.vistaIngreso.radio_pasaporte.addActionListener(this);
     }
     
     public void Iniciar() {
@@ -49,5 +54,27 @@ public class CtrlIngExtraviado implements ActionListener {
                 JOptionPane.showMessageDialog(null, ex);
             }
         }
+        
+        if(vistaIngreso.btn_limpiar == e.getSource()) {
+            try {
+               extraviado.limpiarCampos();
+            } catch(Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+        /*habilita campo de texto rut,pasaporte,aplica al momento de seleccionar uno,sino queda desabilitado*/
+        if (vistaIngreso.radio_rut.isSelected()) {
+            extraviado.habilitarExtraviado(true);
+            vistaIngreso.txt_radioOption.requestFocus();
+        }
+        if (vistaIngreso.radio_pasaporte.isSelected()) {
+            extraviado.habilitarExtraviado(true);
+            vistaIngreso.txt_radioOption.requestFocus();
+        }
+        if (vistaIngreso.radio_noAplica.isSelected()) {
+            extraviado.habilitarExtraviado(false);
+        }
+        
     }
+
 }
