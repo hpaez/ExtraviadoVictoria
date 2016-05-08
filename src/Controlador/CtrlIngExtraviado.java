@@ -6,56 +6,48 @@
 package Controlador;
 
 import Modelo.Extraviado;
-import Modelo.ExtraviadoDAO;
 import Vista.S1_IngresarExtraviado;
 import java.awt.event.*;
+import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 /**
  *
  * @author DerKow
  */
 public class CtrlIngExtraviado implements ActionListener{
-    S1_IngresarExtraviado vistaIngreso = new S1_IngresarExtraviado();
-    ExtraviadoDAO modeloIngreso = new ExtraviadoDAO();
-    Extraviado extraviado = new Extraviado();
+    S1_IngresarExtraviado vistaIngreso;
+    Extraviado extraviado;
     
-    public CtrlIngExtraviado(S1_IngresarExtraviado vistaIngreso, ExtraviadoDAO modeloIngreso){
+    public CtrlIngExtraviado(S1_IngresarExtraviado vistaIngreso, Extraviado modeloIngreso){
         this.vistaIngreso = vistaIngreso;
-        this.modeloIngreso = modeloIngreso;
-        this.vistaIngreso.jButton1.addActionListener(this);
+        this.extraviado = modeloIngreso;
+        this.vistaIngreso.btn_ingresar.addActionListener(this);
+        this.vistaIngreso.btn_limpiar.addActionListener(this);
     }
     
-    public void IngresarExtraviado(){
-        
+    public void Iniciar(){
+        vistaIngreso.setTitle("Ingresar Extraviado - Sistema de Búsqueda de Extraviado");
+        vistaIngreso.pack();
+        vistaIngreso.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        vistaIngreso.setLocationRelativeTo(null);
+        vistaIngreso.setVisible(true);
+        vistaIngreso.setResizable(false);
+        extraviado.habilitarExtraviado(false);
     }
     
     public void actionPerformed(ActionEvent e){
-        
-    }
-    
-    public static boolean validarRut(String rut) {
-
-        boolean validacion = false;
-        try {
-            rut = rut.toUpperCase();
-            rut = rut.replace(".", "");
-            rut = rut.replace("-", "");
-            int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
-
-            char dv = rut.charAt(rut.length() - 1);
-
-            int m = 0, s = 1;
-            for (; rutAux != 0; rutAux /= 10) {
-                s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+        if(vistaIngreso.btn_ingresar == e.getSource()){
+            try{
+                extraviado.ingresarExtraviado();
+            } catch(Exception ex){
+                JOptionPane.showMessageDialog(null, ex);
             }
-            if (dv == (char) (s != 0 ? s + 47 : 75)) {
-                validacion = true;
+        } else {
+            try{
+                extraviado.limpiarExtraviado();
+            } catch(Exception ex){
+                JOptionPane.showMessageDialog(null, ex);
             }
-
-        } catch (java.lang.NumberFormatException e) {
-            
-        } catch (Exception e) {
-            
         }
-        return validacion;
     }
 }

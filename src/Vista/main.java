@@ -1,15 +1,24 @@
 package Vista;
 
-import Controlador.CtrlIngExtraviado;
 import Modelo.Extraviado;
+import Vista.S1_IngresarExtraviado;
+import Controlador.CtrlIngExtraviado;
+import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 public class main {
 
     public static void main(String[] args) {
-        Extraviado extraviado = new Extraviado();
-        S1_IngresarExtraviado ingresarExtraviado = new S1_IngresarExtraviado();
-        ingresarExtraviado.setVisible(true);
+        try{
+            UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(null, e);
+        }
         
+        Extraviado extraviado = new Extraviado();
+        S1_IngresarExtraviado vista = new S1_IngresarExtraviado();
+        CtrlIngExtraviado controlador = new CtrlIngExtraviado(vista, extraviado);
+        controlador.Iniciar();
     }
     
 }
