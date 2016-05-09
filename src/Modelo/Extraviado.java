@@ -19,32 +19,38 @@ public class Extraviado {
     
     public void ingresarExtraviado(ExtraviadoVO extraviadovo) {
         ExtraviadoDAO extraviadodao;
-        if (vistaIngreso.radio_noAplica.isSelected()==false || vistaIngreso.radio_pasaporte.isSelected()==false || vistaIngreso.radio_rut.isSelected()==false){
-            JOptionPane.showMessageDialog(null,"Debe seleccionar una opción","Advertencia",JOptionPane.WARNING_MESSAGE);
+        if(vistaIngreso.buttonGroup1.getSelection() == null || !vistaIngreso.txt_nombre.getText().trim().equals("") || !vistaIngreso.txt_apellidos.getText().trim().equals("") || vistaIngreso.combo_cOjos.getSelectedIndex() > 0 || vistaIngreso.combo_cPelo.getSelectedIndex() > 0 || vistaIngreso.combo_cPiel.getSelectedIndex() > 0 || vistaIngreso.combo_contextura.getSelectedIndex() > 0){
+            if(vistaIngreso.radio_rut.isSelected() == true && !vistaIngreso.txt_radioOption.getText().trim().equals("")){
+                if(validarRut(vistaIngreso.txt_radioOption.getText()) == true){
+                    extraviadodao = new ExtraviadoDAO();
+                    extraviadodao.insertarExtraviado(extraviadovo);
+                } else {
+                    JOptionPane.showMessageDialog(null, "Rut ingresado es incorrecto.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                }
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe ingresar el rut.","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }
+            
+            if(vistaIngreso.radio_pasaporte.isSelected() == true && !vistaIngreso.txt_radioOption.getText().trim().equals("")){
+                extraviadodao = new ExtraviadoDAO();
+                extraviadodao.insertarExtraviado(extraviadovo);
+            } else {
+                JOptionPane.showMessageDialog(null, "Debe ingresar el pasaporte.","Advertencia",JOptionPane.WARNING_MESSAGE);
+            }
         } else {
-            extraviadodao = new ExtraviadoDAO();
-            extraviadodao.insertarExtraviado(extraviadovo);
+            JOptionPane.showMessageDialog(null, "Hay campos que no fueron ingresados.","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
-    }
-    
-    //Limpia campos del Extraviado
-    public void limpiarExtraviado() {
-        habilitarExtraviado(false);
-        vistaIngreso.txt_radioOption.setText("");
-        vistaIngreso.txt_nombreExtraviado.setText("");
-        vistaIngreso.txt_apellidoM_Extraviado.setText("");
-        
-        vistaIngreso.txt_altura.setText("");
-        vistaIngreso.textarea_comentario.setText("");
     }
     
     /*limpia todos los campos del formulario*/
     public void limpiarCampos(){      
         /*datos extraviado*/
-        vistaIngreso.buttonGroup1.clearSelection();
+        habilitarExtraviado(false);
+        
+        vistaIngreso.radio_noAplica.setSelected(true);
         vistaIngreso.txt_radioOption.setText("");
-        vistaIngreso.txt_nombreExtraviado.setText("");
-        vistaIngreso.txt_apellidoM_Extraviado.setText("");
+        vistaIngreso.txt_nombre.setText("");
+        vistaIngreso.txt_apellidos.setText("");
         
         vistaIngreso.combo_cOjos.setSelectedIndex(0);
         vistaIngreso.combo_cPelo.setSelectedIndex(0);

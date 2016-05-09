@@ -31,8 +31,8 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        txt_apellidoM_Extraviado = new javax.swing.JTextField();
-        txt_nombreExtraviado = new javax.swing.JTextField();
+        txt_apellidos = new javax.swing.JTextField();
+        txt_nombre = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         radio_rut = new javax.swing.JRadioButton();
         radio_pasaporte = new javax.swing.JRadioButton();
@@ -164,8 +164,8 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
                                                 .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(txt_peso))))
-                                    .addComponent(txt_nombreExtraviado)
-                                    .addComponent(txt_apellidoM_Extraviado)))
+                                    .addComponent(txt_nombre)
+                                    .addComponent(txt_apellidos)))
                             .addComponent(txt_radioOption))
                         .addContainerGap())))
         );
@@ -182,11 +182,11 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
-                    .addComponent(txt_nombreExtraviado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(txt_apellidoM_Extraviado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_apellidos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -294,8 +294,8 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
     public static javax.swing.JRadioButton radio_rut;
     public static javax.swing.JTextArea textarea_comentario;
     public static javax.swing.JTextField txt_altura;
-    public static javax.swing.JTextField txt_apellidoM_Extraviado;
-    public static javax.swing.JTextField txt_nombreExtraviado;
+    public static javax.swing.JTextField txt_apellidos;
+    public static javax.swing.JTextField txt_nombre;
     public static javax.swing.JTextField txt_peso;
     public static javax.swing.JTextField txt_radioOption;
     // End of variables declaration//GEN-END:variables

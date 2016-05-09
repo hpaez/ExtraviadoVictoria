@@ -37,8 +37,6 @@ public class ExtraviadoVO {
         this.peso_ex = 0;
         this.comentario_ex = "";
     }
-
-    
     
     public int getId_extraviado() {
         return id_extraviado;
@@ -135,6 +133,4 @@ public class ExtraviadoVO {
     public void setComentario_ex(String comentario_ex) {
         this.comentario_ex = comentario_ex;
     }
-    
-    
 }

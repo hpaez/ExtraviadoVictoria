@@ -187,8 +187,8 @@
                                                   </Group>
                                               </Group>
                                           </Group>
-                                          <Component id="txt_nombreExtraviado" max="32767" attributes="0"/>
-                                          <Component id="txt_apellidoM_Extraviado" alignment="0" max="32767" attributes="0"/>
+                                          <Component id="txt_nombre" max="32767" attributes="0"/>
+                                          <Component id="txt_apellidos" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="txt_radioOption" max="32767" attributes="0"/>
@@ -213,12 +213,12 @@
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_nombreExtraviado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_nombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_apellidoM_Extraviado" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_apellidos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -266,12 +266,12 @@
                 <Property name="text" type="java.lang.String" value="Color de Piel"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_apellidoM_Extraviado">
+            <Component class="javax.swing.JTextField" name="txt_apellidos">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_nombreExtraviado">
+            <Component class="javax.swing.JTextField" name="txt_nombre">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>

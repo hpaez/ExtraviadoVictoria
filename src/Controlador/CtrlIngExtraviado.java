@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author DerKow
  */
-public class CtrlIngExtraviado implements ActionListener {
+public class CtrlIngExtraviado implements ActionListener,KeyListener {
     S1_IngresarExtraviado vistaIngreso;
     Extraviado extraviado;
     
@@ -47,10 +47,10 @@ public class CtrlIngExtraviado implements ActionListener {
         if(vistaIngreso.btn_ingresar == e.getSource()) {
             try {
                 ExtraviadoVO extraviadovo=new ExtraviadoVO();
-//                extraviadovo.setId_persona(vistaIngreso.txt_rutSolicitante.getText());
+                //extraviadovo.setId_persona(vistaIngreso.txt_rutSolicitante.getText());
                 extraviadovo.setIdentificacion_ex(vistaIngreso.txt_radioOption.getText());
-                extraviadovo.setNombre_ex(vistaIngreso.txt_nombreExtraviado.getText());
-                extraviadovo.setApellido_ex(vistaIngreso.txt_apellidoM_Extraviado.getText());
+                extraviadovo.setNombre_ex(vistaIngreso.txt_nombre.getText());
+                extraviadovo.setApellido_ex(vistaIngreso.txt_apellidos.getText());
                 extraviadovo.setCabello_ex(vistaIngreso.combo_cPelo.getSelectedItem().toString());
                 extraviadovo.setPiel_ex(vistaIngreso.combo_cPiel.getSelectedItem().toString());
                 extraviadovo.setOjos_ex(vistaIngreso.combo_cOjos.getSelectedItem().toString());
@@ -88,47 +88,30 @@ public class CtrlIngExtraviado implements ActionListener {
         
     }
 
-<<<<<<< HEAD
     @Override
     public void keyTyped(KeyEvent e) {
-        //solo numeros para campo telefono y movil
-        try{
-            if (vistaIngreso.txt_telefonoSolicitante == e.getSource() 
-                    || vistaIngreso.txt_movilSolicitante == e.getSource()) {
-                try{
-                    if (!(Character.isDigit(e.getKeyChar())))
-                    e.consume();        
-                }catch(Exception ex){
-                    //
-                }
-            }
-        }catch (Exception ex){
+        try {
             
-        }    
-        //limite de caracteres
-//        if (_campo.length() == _limitecaracteres) {
-//            e.consume();
-//        }
+        }catch(Exception ex) {
+            
+        }
     }
 
     @Override
     public void keyPressed(KeyEvent e) {
         try {
             
-        }catch(Exception ex){
+        }catch(Exception ex) {
             
-        }    
+        }
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         try {
             
-        }catch(Exception ex){
+        }catch(Exception ex) {
             
         }
     }
-=======
- 
->>>>>>> origin/master
 }

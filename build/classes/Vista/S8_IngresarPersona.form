@@ -110,22 +110,22 @@
                       </Group>
                       <EmptySpace min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_emailSolicitante" alignment="0" max="32767" attributes="0"/>
+                          <Component id="txt_email" alignment="0" max="32767" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txt_telefonoSolicitante" alignment="0" pref="156" max="32767" attributes="0"/>
-                                  <Component id="txt_nombreSolicitante" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txt_rutSolicitante" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="txt_fijo" alignment="0" pref="156" max="32767" attributes="0"/>
+                                  <Component id="txt_nombres" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="txt_rut" alignment="1" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="separate" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Component id="jLabel31" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel30" min="-2" max="-2" attributes="0"/>
+                                  <Component id="jLabel30" max="32767" attributes="0"/>
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txt_apellidoSolicitante" pref="166" max="32767" attributes="0"/>
-                                  <Component id="txt_movilSolicitante" pref="166" max="32767" attributes="0"/>
+                                  <Component id="txt_apellidos" pref="166" max="32767" attributes="0"/>
+                                  <Component id="txt_movil" pref="166" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Component id="txt_direccion" alignment="0" max="32767" attributes="0"/>
@@ -140,26 +140,26 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel26" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="txt_rutSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_rut" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel27" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_nombreSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_nombres" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel30" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_apellidoSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_apellidos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel31" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_movilSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_movil" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel28" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_telefonoSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_fijo" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel29" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_emailSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_email" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -179,7 +179,7 @@
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel27">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nombre"/>
+                <Property name="text" type="java.lang.String" value="Nombres"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel28">
@@ -192,49 +192,49 @@
                 <Property name="text" type="java.lang.String" value="Email"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_rutSolicitante">
+            <Component class="javax.swing.JTextField" name="txt_rut">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_nombreSolicitante">
+            <Component class="javax.swing.JTextField" name="txt_nombres">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_telefonoSolicitante">
+            <Component class="javax.swing.JTextField" name="txt_fijo">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_emailSolicitante">
+            <Component class="javax.swing.JTextField" name="txt_email">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel30">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Apellido"/>
+                <Property name="text" type="java.lang.String" value="Apellidos"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_apellidoSolicitante">
+            <Component class="javax.swing.JTextField" name="txt_apellidos">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_movilSolicitante">
+            <Component class="javax.swing.JTextField" name="txt_movil">
               <AuxValues>
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel31">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Telefono movil"/>
+                <Property name="text" type="java.lang.String" value="Tel&#xe9;fono movil"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel32">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Direccion"/>
+                <Property name="text" type="java.lang.String" value="Direcci&#xf3;n"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JTextField" name="txt_direccion">

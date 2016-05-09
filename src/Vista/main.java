@@ -1,8 +1,7 @@
 package Vista;
 
-import Modelo.Extraviado;
-import Vista.S1_IngresarExtraviado;
-import Controlador.CtrlIngExtraviado;
+import Vista.S0_Principal;
+import Controlador.CtrlPrincipal;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 
@@ -15,9 +14,8 @@ public class main {
             JOptionPane.showMessageDialog(null, e);
         }
         
-        Extraviado extraviado = new Extraviado();
-        S1_IngresarExtraviado vista = new S1_IngresarExtraviado();
-        CtrlIngExtraviado controlador = new CtrlIngExtraviado(vista, extraviado) {};
+        S0_Principal vista = new S0_Principal();
+        CtrlPrincipal controlador = new CtrlPrincipal(vista) {};
         controlador.Iniciar();
     }
     

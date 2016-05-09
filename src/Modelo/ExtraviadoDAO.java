@@ -79,8 +79,8 @@ public class ExtraviadoDAO {
         return extraviado;
     }
     
-    public ArrayList<ExtraviadoVO> listPersona() {
-        ArrayList listaPersona = new ArrayList();
+    public ArrayList<ExtraviadoVO> listExtraviado() {
+        ArrayList listaExtraviado = new ArrayList();
         ExtraviadoVO extraviado;
         try {
             Connection acceDB = conexion.getConexion();
@@ -100,33 +100,18 @@ public class ExtraviadoDAO {
                 extraviado.setContextura_ex(rs.getString(10));
                 extraviado.setPeso_ex(rs.getInt(11));
                 extraviado.setComentario_ex(rs.getString(12));
-                listaPersona.add(extraviado);
+                listaExtraviado.add(extraviado);
             }
         } catch (Exception e) {
         }
-        return listaPersona;
-    }
-    
-    public int deletePersona(String identificacion_ex) {
-        int filAfectadas= 0;
-        try {
-            Connection accesoDB = conexion.getConexion();
-            PreparedStatement ps = accesoDB.prepareStatement("DELETE FROM extraviado WhERE IDENTIFICACIONEXTRAVIAD=?");
-            ps.setString(1, identificacion_ex);
-            filAfectadas = ps.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Se elimino el extraviado exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
-        } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo eliminar");
-        }
-        
-        return filAfectadas;
+        return listaExtraviado;
     }
     
     public int editarExtraviado(ExtraviadoVO extraviado) {
         int filAfectadas=0;
         try {
             Connection accesoDB = conexion.getConexion();
-            PreparedStatement ps = accesoDB.prepareStatement("UPDATE extraviado SET IDEXTRAVIADO=?,IDPERSONA=?,IDENTIFICACIONEXTRAVIAD=?,NOMBREEXTRAVIADO=?,APELLIDOSEXTRAVIADO=?,COLORCABELLOEXTRAVIADO=?,COLORPIELEXTRAVIADO=?,COLOROJOSEXTRAVIADO=?,MEDICIONEXTRAVIADO=?,CONTEXTURAEXTRAVIADO=?,PESOEXTRAVIADO=?,COMENTARIOEXTRAVIADO=? WHERE IDEXTRAVIADO=?");
+            PreparedStatement ps = accesoDB.prepareStatement("UPDATE extraviado SET IDENTIFICACIONEXTRAVIAD=?,NOMBREEXTRAVIADO=?,APELLIDOSEXTRAVIADO=?,COLORCABELLOEXTRAVIADO=?,COLORPIELEXTRAVIADO=?,COLOROJOSEXTRAVIADO=?,MEDICIONEXTRAVIADO=?,CONTEXTURAEXTRAVIADO=?,PESOEXTRAVIADO=?,COMENTARIOEXTRAVIADO=? WHERE IDEXTRAVIADO=?");
             ps.setString(1, extraviado.getIdentificacion_ex());
             ps.setString(2, extraviado.getNombre_ex());
             ps.setString(3, extraviado.getApellido_ex());
