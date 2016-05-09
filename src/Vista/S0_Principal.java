@@ -147,7 +147,7 @@ public class S0_Principal extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_ingresarExtraviado;
+    public javax.swing.JButton btn_ingresarExtraviado;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
