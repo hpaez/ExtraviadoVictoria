@@ -17,17 +17,13 @@ public class Extraviado {
     private S1_IngresarExtraviado vistaIngreso;
     private CtrlIngExtraviado controladorExtraviado;
     
-    public void ingresarExtraviado() {
-        if (vistaIngreso.txt_rutSolicitante.getText().trim().equals("") || vistaIngreso.txt_nombreSolicitante.getText().trim().equals("")
-                || vistaIngreso.txt_apellidoSolicitante.getText().trim().equals("") || vistaIngreso.txt_telefonoSolicitante.getText().trim().equals("")
-                || vistaIngreso.txt_movilSolicitante.getText().trim().equals("") || vistaIngreso.txt_emailSolicitante.getText().trim().equals("")
-                ) {
-            JOptionPane.showMessageDialog(null, "Debe completar todos los campos del Solicitante");
-        }else if (!validarRut(vistaIngreso.txt_rutSolicitante.getText().trim())) {
-            JOptionPane.showMessageDialog(null, "Rut incorrecto");
-            vistaIngreso.txt_rutSolicitante.requestFocus();
-        }else if (vistaIngreso.radio_noAplica.isSelected()==false || vistaIngreso.radio_pasaporte.isSelected()==false || vistaIngreso.radio_rut.isSelected()==false){
-            JOptionPane.showMessageDialog(null, "Debe seleccionar una opción");
+    public void ingresarExtraviado(ExtraviadoVO extraviadovo) {
+        ExtraviadoDAO extraviadodao;
+        if (vistaIngreso.radio_noAplica.isSelected()==false || vistaIngreso.radio_pasaporte.isSelected()==false || vistaIngreso.radio_rut.isSelected()==false){
+            JOptionPane.showMessageDialog(null,"Debe seleccionar una opción","Advertencia",JOptionPane.WARNING_MESSAGE);
+        } else {
+            extraviadodao = new ExtraviadoDAO();
+            extraviadodao.insertarExtraviado(extraviadovo);
         }
     }
     

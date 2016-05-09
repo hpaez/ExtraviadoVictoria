@@ -6,6 +6,8 @@
 package Controlador;
 
 import Modelo.Extraviado;
+import Modelo.ExtraviadoVO;
+import Modelo.ExtraviadoDAO;
 import Vista.S1_IngresarExtraviado;
 import java.awt.event.*;
 import javax.swing.JFrame;
@@ -38,7 +40,19 @@ public class CtrlIngExtraviado implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         if(vistaIngreso.btn_ingresar == e.getSource()) {
             try {
-                extraviado.ingresarExtraviado();
+                ExtraviadoVO extraviadovo=new ExtraviadoVO();
+                extraviadovo.setId_persona(textCod.getText()));
+                extraviadovo.setIdentificacion_ex(vistaIngreso.txt_radioOption.getText());
+                extraviadovo.setNombre_ex(vistaIngreso.txt_nombreExtraviado.getText());
+                extraviadovo.setApellido_ex(vistaIngreso.txt_apellidoP_Extraviado.getText() + " " + vistaIngreso.txt_apellidoM_Extraviado.getText());
+                extraviadovo.setCabello_ex(vistaIngreso.txt_colorPelo.getText());
+                extraviadovo.setPiel_ex(vistaIngreso.txt_colorPiel.getText());
+                extraviadovo.setOjos_ex(vistaIngreso.txt_colorOjos.getText());
+                extraviadovo.setMedicion_ex(Double.parseDouble(vistaIngreso.txt_altura.getText()));
+                extraviadovo.setContextura_ex(vistaIngreso.txt_contextura.getText());
+                extraviadovo.setPeso_ex(Integer.parseInt(vistaIngreso.txt_peso.getText()));
+                extraviadovo.setComentario_ex(vistaIngreso.textarea_comentario.getText());
+                extraviado.ingresarExtraviado(extraviadovo);
             } catch(Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }

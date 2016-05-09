@@ -20,30 +20,32 @@ public class ExtraviadoDAO {
         conexion = new Conexion();
     }
     
-    public String insertarExtraviado(String id_persona, String identificacion_ex, String nombre_ex, String apellido_ex, String cabello_ex, String piel_ex, String ojo_ex, Double medicion_ex, String contextura_ex, int peso_ex, String comentario_ex) {
+    public String insertarExtraviado(ExtraviadoVO extraviado) {
         String rptRegistro = null;
         try {
             Connection accesoDB = conexion.getConexion();
             PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO extraviado(IDPERSONA,IDENTIFICACIONEXTRAVIAD,NOMBREEXTRAVIADO,APELLIDOSEXTRAVIADO,COLORCABELLOEXTRAVIADO,COLORPIELEXTRAVIADO,COLOROJOSEXTRAVIADO,MEDICIONEXTRAVIADO,CONTEXTURAEXTRAVIADO,PESOEXTRAVIADO,COMENTARIOEXTRAVIADO) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
-            ps.setString(1, id_persona);
-            ps.setString(2, identificacion_ex);
-            ps.setString(3, nombre_ex);
-            ps.setString(4, apellido_ex);
-            ps.setString(5, cabello_ex);
-            ps.setString(6, piel_ex);
-            ps.setString(7, ojo_ex);
-            ps.setDouble(8, medicion_ex);
-            ps.setString(9, contextura_ex);
-            ps.setInt(10, peso_ex);
-            ps.setString(11, comentario_ex);
+            ps.setString(1, extraviado.getId_persona());
+            ps.setString(2, extraviado.getIdentificacion_ex());
+            ps.setString(3, extraviado.getNombre_ex());
+            ps.setString(4, extraviado.getApellido_ex());
+            ps.setString(5, extraviado.getCabello_ex());
+            ps.setString(6, extraviado.getPiel_ex());
+            ps.setString(7, extraviado.getOjos_ex());
+            ps.setDouble(8, extraviado.getMedicion_ex());
+            ps.setString(9, extraviado.getContextura_ex());
+            ps.setInt(10, extraviado.getPeso_ex());
+            ps.setString(11, extraviado.getComentario_ex());
             
             int numFilasAfectadas = ps.executeUpdate();
+            ps.close();
+            conexion.Desconectar();
             
             if(numFilasAfectadas>0){
-                JOptionPane.showMessageDialog(null, "Se ingreso el extraviado exitosamente");
+                JOptionPane.showMessageDialog(null, "Se ingreso el extraviado exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, e);
+            JOptionPane.showMessageDialog(null, "No se pudo ingresar.");
         }
         return rptRegistro;
     }
@@ -60,7 +62,7 @@ public class ExtraviadoDAO {
                extraviado = new ExtraviadoVO();
                extraviado.setId_extraviado(rs.getInt(1));
                extraviado.setId_persona(rs.getString(2));
-               extraviado.setIdtentificacion_ex(rs.getString(3));
+               extraviado.setIdentificacion_ex(rs.getString(3));
                extraviado.setNombre_ex(rs.getString(4));
                extraviado.setApellido_ex(rs.getString(5));
                extraviado.setCabello_ex(rs.getString(6));
@@ -88,7 +90,7 @@ public class ExtraviadoDAO {
                 extraviado = new ExtraviadoVO();
                 extraviado.setId_extraviado(rs.getInt(1));
                 extraviado.setId_persona(rs.getString(2));
-                extraviado.setIdtentificacion_ex(rs.getString(3));
+                extraviado.setIdentificacion_ex(rs.getString(3));
                 extraviado.setNombre_ex(rs.getString(4));
                 extraviado.setApellido_ex(rs.getString(5));
                 extraviado.setCabello_ex(rs.getString(6));
@@ -112,30 +114,36 @@ public class ExtraviadoDAO {
             PreparedStatement ps = accesoDB.prepareStatement("DELETE FROM extraviado WhERE IDENTIFICACIONEXTRAVIAD=?");
             ps.setString(1, identificacion_ex);
             filAfectadas = ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se elimino el extraviado exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo eliminar");
         }
         
         return filAfectadas;
     }
     
-    public int editarExtraviado(String id_extraviado, String identificacion_ex, String nombre_ex, String apellido_ex, String cabello_ex, String piel_ex, String ojo_ex, Double medicion_ex, String contextura_ex, int peso_ex, String comentario_ex) {
+    public int editarExtraviado(ExtraviadoVO extraviado) {
         int filAfectadas=0;
         try {
             Connection accesoDB = conexion.getConexion();
             PreparedStatement ps = accesoDB.prepareStatement("UPDATE extraviado SET IDEXTRAVIADO=?,IDPERSONA=?,IDENTIFICACIONEXTRAVIAD=?,NOMBREEXTRAVIADO=?,APELLIDOSEXTRAVIADO=?,COLORCABELLOEXTRAVIADO=?,COLORPIELEXTRAVIADO=?,COLOROJOSEXTRAVIADO=?,MEDICIONEXTRAVIADO=?,CONTEXTURAEXTRAVIADO=?,PESOEXTRAVIADO=?,COMENTARIOEXTRAVIADO=? WHERE IDEXTRAVIADO=?");
-            ps.setString(1, identificacion_ex);
-            ps.setString(2, nombre_ex);
-            ps.setString(3, apellido_ex);
-            ps.setString(4, cabello_ex);
-            ps.setString(5, piel_ex);
-            ps.setString(6, ojo_ex);
-            ps.setDouble(7, medicion_ex);
-            ps.setString(8, contextura_ex);
-            ps.setInt(9, peso_ex);
-            ps.setString(10, comentario_ex);
-            ps.setString(11, id_extraviado);
+            ps.setString(1, extraviado.getIdentificacion_ex());
+            ps.setString(2, extraviado.getNombre_ex());
+            ps.setString(3, extraviado.getApellido_ex());
+            ps.setString(4, extraviado.getCabello_ex());
+            ps.setString(5, extraviado.getPiel_ex());
+            ps.setString(6, extraviado.getOjos_ex());
+            ps.setDouble(7, extraviado.getMedicion_ex());
+            ps.setString(8, extraviado.getContextura_ex());
+            ps.setInt(9, extraviado.getPeso_ex());
+            ps.setString(10, extraviado.getComentario_ex());
+            ps.setInt(11, extraviado.getId_extraviado());
             filAfectadas = ps.executeUpdate();
+            ps.close();
+            conexion.Desconectar();
+            JOptionPane.showMessageDialog(null, "Se actualizo el extraviado exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar");
         }
         return filAfectadas;  
     }

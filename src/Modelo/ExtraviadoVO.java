@@ -12,7 +12,7 @@ package Modelo;
 public class ExtraviadoVO {
     private int id_extraviado;
     private String id_persona;
-    private String idtentificacion_ex;
+    private String identificacion_ex;
     private String nombre_ex;
     private String apellido_ex;
     private String cabello_ex;
@@ -26,7 +26,7 @@ public class ExtraviadoVO {
     public ExtraviadoVO() {
         this.id_extraviado = 0;
         this.id_persona = "";
-        this.idtentificacion_ex = "";
+        this.identificacion_ex = "";
         this.nombre_ex = "";
         this.apellido_ex = "";
         this.cabello_ex = "";
@@ -56,12 +56,12 @@ public class ExtraviadoVO {
         this.id_persona = id_persona;
     }
 
-    public String getIdtentificacion_ex() {
-        return idtentificacion_ex;
+    public String getIdentificacion_ex() {
+        return identificacion_ex;
     }
 
-    public void setIdtentificacion_ex(String idtentificacion_ex) {
-        this.idtentificacion_ex = idtentificacion_ex;
+    public void setIdentificacion_ex(String identificacion_ex) {
+        this.identificacion_ex = identificacion_ex;
     }
 
     public String getNombre_ex() {
