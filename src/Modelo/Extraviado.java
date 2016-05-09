@@ -32,34 +32,25 @@ public class Extraviado {
         habilitarExtraviado(false);
         vistaIngreso.txt_radioOption.setText("");
         vistaIngreso.txt_nombreExtraviado.setText("");
-        vistaIngreso.txt_apellidoP_Extraviado.setText("");
         vistaIngreso.txt_apellidoM_Extraviado.setText("");
-        vistaIngreso.txt_colorPelo.setText("");
-        vistaIngreso.txt_colorPiel.setText("");
-        vistaIngreso.txt_colorOjos.setText("");
+        
         vistaIngreso.txt_altura.setText("");
         vistaIngreso.textarea_comentario.setText("");
     }
     
-    /*erik*/
     /*limpia todos los campos del formulario*/
     public void limpiarCampos(){      
-        /*datos solicitante*/
-        vistaIngreso.txt_rutSolicitante.setText("");
-        vistaIngreso.txt_nombreSolicitante.setText("");
-        vistaIngreso.txt_apellidoSolicitante.setText("");
-        vistaIngreso.txt_telefonoSolicitante.setText("");
-        vistaIngreso.txt_movilSolicitante.setText("");
-        vistaIngreso.txt_emailSolicitante.setText("");
         /*datos extraviado*/
         vistaIngreso.buttonGroup1.clearSelection();
         vistaIngreso.txt_radioOption.setText("");
         vistaIngreso.txt_nombreExtraviado.setText("");
-        vistaIngreso.txt_apellidoP_Extraviado.setText("");
         vistaIngreso.txt_apellidoM_Extraviado.setText("");
-        vistaIngreso.txt_colorPelo.setText("");
-        vistaIngreso.txt_colorPiel.setText("");
-        vistaIngreso.txt_colorOjos.setText("");
+        
+        vistaIngreso.combo_cOjos.setSelectedIndex(0);
+        vistaIngreso.combo_cPelo.setSelectedIndex(0);
+        vistaIngreso.combo_cPiel.setSelectedIndex(0);
+        vistaIngreso.combo_contextura.setSelectedIndex(0);
+        
         vistaIngreso.txt_altura.setText("");
         vistaIngreso.textarea_comentario.setText("");
         

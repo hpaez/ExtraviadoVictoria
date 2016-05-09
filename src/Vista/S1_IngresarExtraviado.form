@@ -59,8 +59,8 @@
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
-              <Component id="jPanel1" max="32767" attributes="0"/>
-              <EmptySpace max="-2" attributes="0"/>
+              <Component id="jPanel1" min="-2" max="-2" attributes="0"/>
+              <EmptySpace max="32767" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,11 +75,12 @@
                   <EmptySpace min="-2" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                           <Component id="btn_limpiar" min="-2" pref="110" max="-2" attributes="0"/>
                           <EmptySpace max="32767" attributes="0"/>
                           <Component id="btn_ingresar" min="-2" pref="110" max="-2" attributes="0"/>
+                          <EmptySpace min="-2" pref="30" max="-2" attributes="0"/>
                       </Group>
-                      <Component id="jPanel2" alignment="0" max="32767" attributes="0"/>
                       <Component id="jLabel1" alignment="0" max="32767" attributes="0"/>
                       <Component id="jPanel3" max="32767" attributes="0"/>
                   </Group>
@@ -92,14 +93,12 @@
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jPanel3" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="btn_ingresar" alignment="3" pref="30" max="32767" attributes="0"/>
-                      <Component id="btn_limpiar" alignment="3" pref="30" max="32767" attributes="0"/>
+                      <Component id="btn_limpiar" alignment="3" pref="37" max="32767" attributes="0"/>
+                      <Component id="btn_ingresar" alignment="3" pref="37" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
@@ -116,148 +115,6 @@
             <Property name="text" type="java.lang.String" value="Ingresar Extraviado"/>
           </Properties>
         </Component>
-        <Container class="javax.swing.JPanel" name="jPanel2">
-          <Properties>
-            <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
-              <Border info="org.netbeans.modules.form.compat2.border.TitledBorderInfo">
-                <TitledBorder title="Datos del Solicitante">
-                  <Font PropertyName="font" name="Tahoma" size="12" style="0"/>
-                </TitledBorder>
-              </Border>
-            </Property>
-          </Properties>
-
-          <Layout>
-            <DimensionLayout dim="0">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" attributes="0">
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="jLabel4" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel2" alignment="0" max="32767" attributes="0"/>
-                          <Component id="jLabel5" max="32767" attributes="0"/>
-                          <Component id="jLabel3" alignment="0" max="32767" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="txt_emailSolicitante" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="0" attributes="0">
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txt_telefonoSolicitante" max="32767" attributes="0"/>
-                                  <Component id="txt_nombreSolicitante" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="txt_rutSolicitante" alignment="0" max="32767" attributes="0"/>
-                              </Group>
-                              <EmptySpace min="-2" pref="53" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="jLabel12" alignment="1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jLabel13" alignment="1" min="-2" pref="37" max="-2" attributes="0"/>
-                              </Group>
-                              <EmptySpace type="separate" min="-2" max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="txt_movilSolicitante" max="32767" attributes="0"/>
-                                  <Component id="txt_apellidoSolicitante" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
-                      </Group>
-                      <EmptySpace min="-2" max="-2" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-            <DimensionLayout dim="1">
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel2" alignment="3" min="-2" pref="14" max="-2" attributes="0"/>
-                          <Component id="txt_rutSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_nombreSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_apellidoSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_movilSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_telefonoSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_emailSolicitante" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace pref="20" max="32767" attributes="0"/>
-                  </Group>
-              </Group>
-            </DimensionLayout>
-          </Layout>
-          <SubComponents>
-            <Component class="javax.swing.JLabel" name="jLabel2">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Rut"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel3">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Nombre"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel4">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Tel&#xe9;fono"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel5">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Email"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_rutSolicitante">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_nombreSolicitante">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_telefonoSolicitante">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_emailSolicitante">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel12">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Apellido"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_apellidoSolicitante">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_movilSolicitante">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel13">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="M&#xf3;vil"/>
-              </Properties>
-            </Component>
-          </SubComponents>
-        </Container>
         <Container class="javax.swing.JPanel" name="jPanel3">
           <Properties>
             <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
@@ -297,32 +154,41 @@
                               <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel8" alignment="0" min="-2" max="-2" attributes="0"/>
                                           <Component id="jLabel7" alignment="0" min="-2" pref="80" max="-2" attributes="0"/>
                                           <Component id="jLabel10" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
                                           <Component id="jLabel14" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
+                                          <Component id="jLabel16" alignment="0" min="-2" pref="78" max="-2" attributes="0"/>
                                       </Group>
                                       <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                                       <Group type="103" groupAlignment="0" attributes="0">
-                                          <Component id="txt_colorPiel" max="32767" attributes="0"/>
-                                          <Component id="txt_apellidoP_Extraviado" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txt_apellidoM_Extraviado" alignment="0" max="32767" attributes="0"/>
-                                          <Component id="txt_nombreExtraviado" alignment="1" max="32767" attributes="0"/>
-                                          <Component id="txt_colorPelo" alignment="1" max="32767" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="0" attributes="0">
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel15" min="-2" pref="78" max="-2" attributes="0"/>
-                                              <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
-                                              <Component id="txt_altura" max="32767" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <Component id="jLabel11" min="-2" pref="78" max="-2" attributes="0"/>
+                                          <Group type="102" attributes="0">
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Component id="combo_cPiel" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="combo_cPelo" alignment="1" max="32767" attributes="0"/>
+                                                  <Component id="combo_contextura" max="32767" attributes="0"/>
+                                              </Group>
                                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                              <Component id="txt_colorOjos" max="32767" attributes="0"/>
+                                              <Group type="103" groupAlignment="0" attributes="0">
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel15" min="-2" pref="78" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="txt_altura" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" alignment="0" attributes="0">
+                                                      <Component id="jLabel11" min="-2" pref="78" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                      <Component id="combo_cOjos" max="32767" attributes="0"/>
+                                                  </Group>
+                                                  <Group type="102" attributes="0">
+                                                      <Component id="jLabel17" min="-2" pref="78" max="-2" attributes="0"/>
+                                                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
+                                                      <Component id="txt_peso" max="32767" attributes="0"/>
+                                                  </Group>
+                                              </Group>
                                           </Group>
+                                          <Component id="txt_nombreExtraviado" max="32767" attributes="0"/>
+                                          <Component id="txt_apellidoM_Extraviado" alignment="0" max="32767" attributes="0"/>
                                       </Group>
                                   </Group>
                                   <Component id="txt_radioOption" max="32767" attributes="0"/>
@@ -354,24 +220,26 @@
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txt_apellidoM_Extraviado" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_apellidoP_Extraviado" alignment="3" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_colorPiel" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="txt_colorOjos" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combo_cPiel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combo_cOjos" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="txt_colorPelo" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel15" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="txt_altura" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combo_cPelo" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jLabel17" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="txt_peso" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="combo_contextura" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
                       <Component id="jLabel6" min="-2" max="-2" attributes="0"/>
@@ -385,17 +253,12 @@
           <SubComponents>
             <Component class="javax.swing.JLabel" name="jLabel7">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Nombre"/>
+                <Property name="text" type="java.lang.String" value="Nombres :"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel8">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Apellido Materno"/>
-              </Properties>
-            </Component>
-            <Component class="javax.swing.JLabel" name="jLabel9">
-              <Properties>
-                <Property name="text" type="java.lang.String" value="Apellido Paterno"/>
+                <Property name="text" type="java.lang.String" value="Apellidos"/>
               </Properties>
             </Component>
             <Component class="javax.swing.JLabel" name="jLabel10">
@@ -413,25 +276,10 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_apellidoP_Extraviado">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel11">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Color de ojos"/>
               </Properties>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_colorPiel">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
-            </Component>
-            <Component class="javax.swing.JTextField" name="txt_colorOjos">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
             </Component>
             <Component class="javax.swing.JRadioButton" name="radio_rut">
               <Properties>
@@ -476,11 +324,6 @@
                 <Property name="text" type="java.lang.String" value="Color de Pelo"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="txt_colorPelo">
-              <AuxValues>
-                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
-              </AuxValues>
-            </Component>
             <Component class="javax.swing.JLabel" name="jLabel15">
               <Properties>
                 <Property name="text" type="java.lang.String" value="Estatura"/>
@@ -514,6 +357,81 @@
                 </Component>
               </SubComponents>
             </Container>
+            <Component class="javax.swing.JLabel" name="jLabel16">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Contextura"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JLabel" name="jLabel17">
+              <Properties>
+                <Property name="text" type="java.lang.String" value="Peso"/>
+              </Properties>
+            </Component>
+            <Component class="javax.swing.JTextField" name="txt_peso">
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="9"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="combo_cPiel">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="combo_cOjos">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="combo_cPelo">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
+            <Component class="javax.swing.JComboBox" name="combo_contextura">
+              <Properties>
+                <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+                  <StringArray count="4">
+                    <StringItem index="0" value="Item 1"/>
+                    <StringItem index="1" value="Item 2"/>
+                    <StringItem index="2" value="Item 3"/>
+                    <StringItem index="3" value="Item 4"/>
+                  </StringArray>
+                </Property>
+              </Properties>
+              <AuxValues>
+                <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+              </AuxValues>
+            </Component>
           </SubComponents>
         </Container>
         <Component class="javax.swing.JButton" name="btn_ingresar">
