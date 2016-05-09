@@ -51,6 +51,11 @@ public class S0_Principal extends javax.swing.JFrame {
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "  Extraviado", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
 
         btn_ingresarExtraviado.setText("Ingresar");
+        btn_ingresarExtraviado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ingresarExtraviadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -135,6 +140,10 @@ public class S0_Principal extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_ingresarExtraviadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ingresarExtraviadoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_ingresarExtraviadoActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

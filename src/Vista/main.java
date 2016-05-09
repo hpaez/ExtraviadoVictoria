@@ -17,7 +17,7 @@ public class main {
         
         Extraviado extraviado = new Extraviado();
         S1_IngresarExtraviado vista = new S1_IngresarExtraviado();
-        CtrlIngExtraviado controlador = new CtrlIngExtraviado(vista, extraviado);
+        CtrlIngExtraviado controlador = new CtrlIngExtraviado(vista, extraviado) {};
         controlador.Iniciar();
     }
     
