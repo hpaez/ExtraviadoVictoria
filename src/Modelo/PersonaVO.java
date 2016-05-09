@@ -19,13 +19,6 @@ public class PersonaVO {
     private String direccion_per;
     
     public PersonaVO(){
-        id_persona = "";
-        nombre_per = "";
-        apellido_per = "";
-        fijo_per = "";
-        movil_per = "";
-        correo_per = "";
-        direccion_per = "";
     }    
 
     public String getId_persona() {

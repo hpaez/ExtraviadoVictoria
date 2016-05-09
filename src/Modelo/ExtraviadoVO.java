@@ -24,18 +24,6 @@ public class ExtraviadoVO {
     private String comentario_ex;
 
     public ExtraviadoVO() {
-        this.id_extraviado = 0;
-        this.id_persona = "";
-        this.identificacion_ex = "";
-        this.nombre_ex = "";
-        this.apellido_ex = "";
-        this.cabello_ex = "";
-        this.piel_ex = "";
-        this.ojos_ex = "";
-        this.medicion_ex = 0.0;
-        this.contextura_ex = "";
-        this.peso_ex = 0;
-        this.comentario_ex = "";
     }
     
     public int getId_extraviado() {

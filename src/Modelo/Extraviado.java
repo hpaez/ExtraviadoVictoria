@@ -14,56 +14,19 @@ import javax.swing.JOptionPane;
  * @author DerKow
  */
 public class Extraviado {
-    private S1_IngresarExtraviado vistaIngreso;
-    private CtrlIngExtraviado controladorExtraviado;
-    
-    public void ingresarExtraviado(ExtraviadoVO extraviadovo) {
-        ExtraviadoDAO extraviadodao;
-        if(vistaIngreso.buttonGroup1.getSelection() == null || !vistaIngreso.txt_nombre.getText().trim().equals("") || !vistaIngreso.txt_apellidos.getText().trim().equals("") || vistaIngreso.combo_cOjos.getSelectedIndex() > 0 || vistaIngreso.combo_cPelo.getSelectedIndex() > 0 || vistaIngreso.combo_cPiel.getSelectedIndex() > 0 || vistaIngreso.combo_contextura.getSelectedIndex() > 0){
-            if(vistaIngreso.radio_rut.isSelected() == true && !vistaIngreso.txt_radioOption.getText().trim().equals("")){
-                if(validarRut(vistaIngreso.txt_radioOption.getText()) == true){
-                    extraviadodao = new ExtraviadoDAO();
-                    extraviadodao.insertarExtraviado(extraviadovo);
-                } else {
-                    JOptionPane.showMessageDialog(null, "Rut ingresado es incorrecto.","Advertencia",JOptionPane.WARNING_MESSAGE);
-                }
-            } else {
-                JOptionPane.showMessageDialog(null, "Debe ingresar el rut.","Advertencia",JOptionPane.WARNING_MESSAGE);
-            }
-            
-            if(vistaIngreso.radio_pasaporte.isSelected() == true && !vistaIngreso.txt_radioOption.getText().trim().equals("")){
-                extraviadodao = new ExtraviadoDAO();
-                extraviadodao.insertarExtraviado(extraviadovo);
-            } else {
-                JOptionPane.showMessageDialog(null, "Debe ingresar el pasaporte.","Advertencia",JOptionPane.WARNING_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Hay campos que no fueron ingresados.","Advertencia",JOptionPane.WARNING_MESSAGE);
-        }
-    }
-    
-    /*limpia todos los campos del formulario*/
-    public void limpiarCampos(){      
-        /*datos extraviado*/
-        habilitarExtraviado(false);
-        
-        vistaIngreso.radio_noAplica.setSelected(true);
-        vistaIngreso.txt_radioOption.setText("");
-        vistaIngreso.txt_nombre.setText("");
-        vistaIngreso.txt_apellidos.setText("");
-        
-        vistaIngreso.combo_cOjos.setSelectedIndex(0);
-        vistaIngreso.combo_cPelo.setSelectedIndex(0);
-        vistaIngreso.combo_cPiel.setSelectedIndex(0);
-        vistaIngreso.combo_contextura.setSelectedIndex(0);
-        
-        vistaIngreso.txt_altura.setText("");
-        vistaIngreso.textarea_comentario.setText("");
-        
-    }
-    
-    public void habilitarExtraviado(boolean sw) {
-        vistaIngreso.txt_radioOption.setEnabled(sw);
+    public void ingresarExtraviado(String idpersona, String idextraviado, String nombre, String apellido, String colorcabello, String colorpiel, String colorojo, Double medicion, String contextura, int peso, String comentario) {
+        ExtraviadoVO extraviadovo = new ExtraviadoVO();
+        extraviadovo.setId_persona(idpersona);
+        extraviadovo.setIdentificacion_ex(idextraviado);
+        extraviadovo.setNombre_ex(nombre);
+        extraviadovo.setApellido_ex(apellido);
+        extraviadovo.setCabello_ex(colorcabello);
+        extraviadovo.setPiel_ex(colorpiel);
+        extraviadovo.setOjos_ex(colorojo);
+        extraviadovo.setMedicion_ex(medicion);
+        extraviadovo.setContextura_ex(contextura);
+        extraviadovo.setPeso_ex(peso);
+        extraviadovo.setComentario_ex(comentario);
     }
     
     public static boolean validarRut(String rut) {

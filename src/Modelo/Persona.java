@@ -1,39 +1,19 @@
 package Modelo;
 
-import Controlador.CtrlIngPersona;
-import Vista.S8_IngresarPersona;
-import javax.swing.JOptionPane;
-
 /**
  *
  * @author erik
  */
 public class Persona {
-    private S8_IngresarPersona vistaPersona;
-    private CtrlIngPersona controladorPersona;
-    
-    public void ingresarPersona(PersonaVO personavo) {
-        PersonaDAO personadao;
-        if(!vistaPersona.txt_rut.getText().trim().equals("") && !vistaPersona.txt_nombres.getText().trim().equals("") && !vistaPersona.txt_apellidos.getText().trim().equals("") && !vistaPersona.txt_direccion.getText().trim().equals("") && (!vistaPersona.txt_fijo.getText().trim().equals("") || !vistaPersona.txt_movil.getText().trim().equals(""))){
-            if(validarRut(vistaPersona.txt_rut.getText()) == true){
-                personadao = new PersonaDAO();
-                personadao.insertarPersona(personavo);
-            } else {
-                JOptionPane.showMessageDialog(null, "El rut ingresado es incorrecto.","Advertencia",JOptionPane.WARNING_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Hay campos que no fueron ingresados.","Advertencia",JOptionPane.WARNING_MESSAGE);
-        }
-    }
-    
-    public void limpiarCampos(){     
-        /*datos solicitante*/
-        vistaPersona.txt_rut.setText("");
-        vistaPersona.txt_nombres.setText("");
-        vistaPersona.txt_apellidos.setText("");
-        vistaPersona.txt_fijo.setText("");
-        vistaPersona.txt_movil.setText("");
-        vistaPersona.txt_email.setText("");
+    public void ingresarPersona(String rut, String nombre, String apellido, String fijo, String movil, String email, String direccion) {
+        PersonaVO personavo = new PersonaVO();
+        personavo.setId_persona(rut);
+        personavo.setNombre_per(nombre);
+        personavo.setApellido_per(apellido);
+        personavo.setFijo_per(fijo);
+        personavo.setMovil_per(movil);
+        personavo.setCorreo_per(email);
+        personavo.setDireccion_per(direccion);
     }
     
     public static boolean validarRut(String rut) {
