@@ -17,7 +17,7 @@ import javax.swing.JOptionPane;
  *
  * @author DerKow
  */
-public class CtrlIngExtraviado implements ActionListener,KeyListener {
+public class CtrlIngExtraviado implements ActionListener {
     S1_IngresarExtraviado vistaIngreso;
     Extraviado extraviado;
     
@@ -29,9 +29,7 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         this.vistaIngreso.radio_noAplica.addActionListener(this);
         this.vistaIngreso.radio_rut.addActionListener(this);
         this.vistaIngreso.radio_pasaporte.addActionListener(this);
-        //key listeners
-        this.vistaIngreso.txt_telefonoSolicitante.addKeyListener(this);
-        this.vistaIngreso.txt_movilSolicitante.addKeyListener(this);
+        
     }
     
     public void Iniciar() {
@@ -48,13 +46,13 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         if(vistaIngreso.btn_ingresar == e.getSource()) {
             try {
                 ExtraviadoVO extraviadovo=new ExtraviadoVO();
-                extraviadovo.setId_persona(vistaIngreso.txt_rutSolicitante.getText());
+//                extraviadovo.setId_persona(vistaIngreso.txt_rutSolicitante.getText());
                 extraviadovo.setIdentificacion_ex(vistaIngreso.txt_radioOption.getText());
                 extraviadovo.setNombre_ex(vistaIngreso.txt_nombreExtraviado.getText());
-                extraviadovo.setApellido_ex(vistaIngreso.txt_apellidoP_Extraviado.getText() + " " + vistaIngreso.txt_apellidoM_Extraviado.getText());
-                extraviadovo.setCabello_ex(vistaIngreso.txt_colorPelo.getText());
-                extraviadovo.setPiel_ex(vistaIngreso.txt_colorPiel.getText());
-                extraviadovo.setOjos_ex(vistaIngreso.txt_colorOjos.getText());
+                extraviadovo.setApellido_ex(vistaIngreso.txt_apellidoM_Extraviado.getText());
+                extraviadovo.setCabello_ex(vistaIngreso.combo_cPelo.getSelectedItem().toString());
+                extraviadovo.setPiel_ex(vistaIngreso.combo_cPiel.getSelectedItem().toString());
+                extraviadovo.setOjos_ex(vistaIngreso.combo_cOjos.getSelectedItem().toString());
                 extraviadovo.setMedicion_ex(Double.parseDouble(vistaIngreso.txt_altura.getText()));
                 extraviadovo.setContextura_ex("");
                 extraviadovo.setPeso_ex(Integer.parseInt("0"));
@@ -93,45 +91,5 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         
     }
 
-    @Override
-    public void keyTyped(KeyEvent e) {
-        //solo numeros para campo telefono y movil
-        try{
-            if (vistaIngreso.txt_telefonoSolicitante == e.getSource() 
-                    || vistaIngreso.txt_movilSolicitante == e.getSource()) {
-            try{
-                if (!(Character.isDigit(e.getKeyChar())))
-                e.consume();        
-            }catch(Exception ex){
-                //
-            }
-            }
-        }catch (Exception ex){
-            
-        }    
-        //limite de caracteres
-//        if (_campo.length() == _limitecaracteres) {
-//            e.consume();
-//        }
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        try {
-            
-        }catch(Exception ex){
-            
-        }    
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        try {
-            
-        }catch(Exception ex){
-            
-        }
-    }
-    
-    
+ 
 }
