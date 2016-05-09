@@ -33,18 +33,23 @@ public class CtrlPrincipal implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(vistaPrincipal.btn_ingresarExtraviado == e.getSource()){
-            try {
-                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-            } catch(Exception ee) {
-                JOptionPane.showMessageDialog(null, ee);
-            }
-            
+        if(vistaPrincipal.btn_ingresarExtraviado == e.getSource()){           
             Persona persona = new Persona();
             S8_IngresarPersona vista = new S8_IngresarPersona();
             CtrlIngPersona controlador = new CtrlIngPersona(vista, persona) {};
+            //desaparece la pantalla principal
+            vistaPrincipal.setVisible(false);
+            
             controlador.Iniciar();
+            
+            //try {
+//                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
+//            } catch(Exception ee) {
+//                JOptionPane.showMessageDialog(null, ee);
+//            }
+            
         }
+        
     }
     
 }

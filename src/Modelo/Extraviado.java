@@ -14,6 +14,7 @@ import javax.swing.JOptionPane;
  * @author DerKow
  */
 public class Extraviado {
+<<<<<<< HEAD
     public void ingresarExtraviado(String idpersona, String idextraviado, String nombre, String apellido, String colorcabello, String colorpiel, String colorojo, Double medicion, String contextura, int peso, String comentario) {
         ExtraviadoVO extraviadovo = new ExtraviadoVO();
         extraviadovo.setId_persona(idpersona);
@@ -50,4 +51,7 @@ public class Extraviado {
         }
         return validacion;
     }
+=======
+    
+>>>>>>> origin/master
 }

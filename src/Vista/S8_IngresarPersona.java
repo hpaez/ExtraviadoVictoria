@@ -48,7 +48,7 @@ public class S8_IngresarPersona extends javax.swing.JFrame {
         btn_guardar = new javax.swing.JButton();
         btn_cancelar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Solicitante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
