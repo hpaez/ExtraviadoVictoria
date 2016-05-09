@@ -42,6 +42,7 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         vistaIngreso.setVisible(true);
         vistaIngreso.setResizable(false);
         extraviado.habilitarExtraviado(false);
+        vistaIngreso.radio_noAplica.setSelected(true);
     }
     
     public void actionPerformed(ActionEvent e) {
@@ -63,32 +64,28 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
             } catch(Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
-        } else {
-            try {
-                extraviado.limpiarExtraviado();
-            } catch(Exception ex) {
-                JOptionPane.showMessageDialog(null, ex);
-            }
-        }
-        
-        if(vistaIngreso.btn_limpiar == e.getSource()) {
+        } else if(vistaIngreso.btn_limpiar == e.getSource()) {
             try {
                extraviado.limpiarCampos();
             } catch(Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
         }
+        
         /*habilita campo de texto rut,pasaporte,aplica al momento de seleccionar uno,sino queda desabilitado*/
         if (vistaIngreso.radio_rut.isSelected()) {
             extraviado.habilitarExtraviado(true);
             vistaIngreso.txt_radioOption.requestFocus();
+            vistaIngreso.txt_radioOption.setText("");
         }
         if (vistaIngreso.radio_pasaporte.isSelected()) {
             extraviado.habilitarExtraviado(true);
             vistaIngreso.txt_radioOption.requestFocus();
+            vistaIngreso.txt_radioOption.setText("");
         }
         if (vistaIngreso.radio_noAplica.isSelected()) {
             extraviado.habilitarExtraviado(false);
+            vistaIngreso.txt_radioOption.setText("");
         }
         
     }
@@ -99,12 +96,12 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         try{
             if (vistaIngreso.txt_telefonoSolicitante == e.getSource() 
                     || vistaIngreso.txt_movilSolicitante == e.getSource()) {
-            try{
-                if (!(Character.isDigit(e.getKeyChar())))
-                e.consume();        
-            }catch(Exception ex){
-                //
-            }
+                try{
+                    if (!(Character.isDigit(e.getKeyChar())))
+                    e.consume();        
+                }catch(Exception ex){
+                    //
+                }
             }
         }catch (Exception ex){
             
@@ -132,6 +129,4 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
             
         }
     }
-    
-    
 }
