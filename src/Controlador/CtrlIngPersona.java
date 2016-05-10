@@ -1,9 +1,11 @@
 package Controlador;
 
+import Modelo.Extraviado;
 import Modelo.PersonaVO;
 import Modelo.Persona;
 import Modelo.PersonaDAO;
 import Vista.S0_Principal;
+import Vista.S1_IngresarExtraviado;
 import Vista.S8_IngresarPersona;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -18,11 +20,8 @@ import javax.swing.JOptionPane;
  */
 public class CtrlIngPersona implements ActionListener,KeyListener {
     private S8_IngresarPersona vistaPersona;
-    private S0_Principal vistaPrincipal;
     private Persona persona;
-    CtrlIngPersona controlador ;
-    
-    private CtrlIngPersona controladorPersona;
+    CtrlIngPersona ctrlPersona;
     
     public CtrlIngPersona(S8_IngresarPersona vistaPersona, Persona persona) {
         this.vistaPersona = vistaPersona;
@@ -52,15 +51,30 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
     public void actionPerformed(ActionEvent e) {
         if(vistaPersona.btn_guardar == e.getSource()) {
             try {
-                PersonaVO personavo=new PersonaVO();
-                personavo.setId_persona(vistaPersona.txt_rut.getText());
-                personavo.setNombre_per(vistaPersona.txt_nombres.getText());
-                personavo.setApellido_per(vistaPersona.txt_apellidos.getText());
-                personavo.setFijo_per(vistaPersona.txt_fijo.getText());
-                personavo.setMovil_per(vistaPersona.txt_movil.getText());
-                personavo.setCorreo_per(vistaPersona.txt_email.getText());
-                personavo.setDireccion_per(vistaPersona.txt_direccion.getText());
-                ingresarPersona(personavo);
+                if(!vistaPersona.txt_rut.getText().trim().equals("") && !vistaPersona.txt_nombres.getText().trim().equals("") && !vistaPersona.txt_apellidos.getText().trim().equals("") && !vistaPersona.txt_direccion.getText().trim().equals("") && (!vistaPersona.txt_fijo.getText().trim().equals("") || !vistaPersona.txt_movil.getText().trim().equals(""))){
+                    if(validarRut(vistaPersona.txt_rut.getText()) == true){
+                            PersonaVO personavo=new PersonaVO();
+                            personavo.setId_persona(vistaPersona.txt_rut.getText());
+                            personavo.setNombre_per(vistaPersona.txt_nombres.getText());
+                            personavo.setApellido_per(vistaPersona.txt_apellidos.getText());
+                            personavo.setFijo_per(vistaPersona.txt_fijo.getText());
+                            personavo.setMovil_per(vistaPersona.txt_movil.getText());
+                            personavo.setCorreo_per(vistaPersona.txt_email.getText());
+                            personavo.setDireccion_per(vistaPersona.txt_direccion.getText());
+                            ingresarPersona(personavo);
+
+                            Extraviado extraviado = new Extraviado();
+                            S1_IngresarExtraviado vistaExtraviado = new S1_IngresarExtraviado();
+                            CtrlIngExtraviado ctrlExtraviado = new CtrlIngExtraviado(vistaExtraviado, extraviado) {};
+
+                            vistaPersona.setVisible(false);
+                            ctrlExtraviado.Iniciar();
+                    } else {
+                        JOptionPane.showMessageDialog(null, "El rut ingresado es incorrecto.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(null, "Hay campos que no fueron ingresados.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                }    
             } catch(Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
@@ -71,10 +85,14 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
                 JOptionPane.showMessageDialog(null, ex);
             }
         } else if(vistaPersona.btn_cancelar == e.getSource()) {
-            
-            controlador.Iniciar();
-            vistaPersona.setVisible(false);
-            
+            try {
+                S0_Principal vistaPrincipal = new S0_Principal();
+                CtrlPrincipal ctrlPrincipal = new CtrlPrincipal(vistaPrincipal) {};
+                ctrlPrincipal.Iniciar();
+                vistaPersona.setVisible(false);
+                } catch(Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
         }
     }
     
@@ -119,17 +137,8 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
     }
     
     public void ingresarPersona(PersonaVO personavo) {
-        PersonaDAO personadao;
-        if(!vistaPersona.txt_rut.getText().trim().equals("") && !vistaPersona.txt_nombres.getText().trim().equals("") && !vistaPersona.txt_apellidos.getText().trim().equals("") && !vistaPersona.txt_direccion.getText().trim().equals("") && (!vistaPersona.txt_fijo.getText().trim().equals("") || !vistaPersona.txt_movil.getText().trim().equals(""))){
-            if(validarRut(vistaPersona.txt_rut.getText()) == true){
-                personadao = new PersonaDAO();
-                personadao.insertarPersona(personavo);
-            } else {
-                JOptionPane.showMessageDialog(null, "El rut ingresado es incorrecto.","Advertencia",JOptionPane.WARNING_MESSAGE);
-            }
-        } else {
-            JOptionPane.showMessageDialog(null, "Hay campos que no fueron ingresados.","Advertencia",JOptionPane.WARNING_MESSAGE);
-        }
+        PersonaDAO personadao = new PersonaDAO();
+        personadao.insertarPersona(personavo);
     }
     
     public void limpiarCampos(){     
@@ -140,6 +149,7 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
         vistaPersona.txt_fijo.setText("");
         vistaPersona.txt_movil.setText("");
         vistaPersona.txt_email.setText("");
+        vistaPersona.txt_direccion.setText("");
     }
     
     public static boolean validarRut(String rut) {

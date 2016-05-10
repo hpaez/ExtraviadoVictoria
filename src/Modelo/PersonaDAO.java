@@ -41,33 +41,29 @@ public class PersonaDAO {
                 JOptionPane.showMessageDialog(null, "Se ingreso la persona exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo ingresar.");
+            JOptionPane.showMessageDialog(null, "No se pudo ingresar.","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
         return rptRegistro;
     }
     
-    public PersonaVO verificaPersona(String id) {
-        PersonaVO persona=null;
+    public boolean verificaPersona(String id) {
+        boolean resultado = false;
         Connection accesoDB = conexion.getConexion();
         try {
             PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM persona WHERE IDPERSONA=?");
             ps.setString(1, id);
             
-            ResultSet rs = ps.executeQuery();
-            if(rs.next()){
-               persona = new PersonaVO();
-               persona.setId_persona(rs.getString(1));
-               persona.setNombre_per(rs.getString(2));
-               persona.setApellido_per(rs.getString(3));
-               persona.setFijo_per(rs.getString(4));
-               persona.setMovil_per(rs.getString(5));
-               persona.setCorreo_per(rs.getString(6));
-               persona.setDireccion_per(rs.getString(7));
-               return persona;
+            int numFilasAfectadas = ps.executeUpdate();
+            ps.close();
+            conexion.Desconectar();
+            
+            if(numFilasAfectadas>0){
+                resultado = true;
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
-        return persona;
+        return resultado;
     }
     
     public ArrayList<PersonaVO> listPersona() {
@@ -89,6 +85,7 @@ public class PersonaDAO {
                 listaPersona.add(persona);
             }
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
         return listaPersona;
     }
@@ -110,7 +107,7 @@ public class PersonaDAO {
             conexion.Desconectar();
             JOptionPane.showMessageDialog(null, "Se actualizo la persona exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo actualizar");
+            JOptionPane.showMessageDialog(null, "No se pudo actualizar","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
         return filAfectadas;  
     }

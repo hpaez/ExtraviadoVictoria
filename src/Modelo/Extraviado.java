@@ -14,9 +14,9 @@ import javax.swing.JOptionPane;
  * @author DerKow
  */
 public class Extraviado {
-<<<<<<< HEAD
-    public void ingresarExtraviado(String idpersona, String idextraviado, String nombre, String apellido, String colorcabello, String colorpiel, String colorojo, Double medicion, String contextura, int peso, String comentario) {
+    public void ingresarExtraviado(String idpersona, String idextraviado, String nombre, String apellido, int colorcabello, int colorpiel, int colorojo, Double medicion, int contextura, int peso, String comentario) {
         ExtraviadoVO extraviadovo = new ExtraviadoVO();
+        ExtraviadoDAO extraviadodao = new ExtraviadoDAO();
         extraviadovo.setId_persona(idpersona);
         extraviadovo.setIdentificacion_ex(idextraviado);
         extraviadovo.setNombre_ex(nombre);
@@ -28,30 +28,23 @@ public class Extraviado {
         extraviadovo.setContextura_ex(contextura);
         extraviadovo.setPeso_ex(peso);
         extraviadovo.setComentario_ex(comentario);
+        extraviadodao.insertarExtraviado(extraviadovo);
     }
     
-    public static boolean validarRut(String rut) {
-        boolean validacion = false;
-        try {
-            rut = rut.toUpperCase();
-            rut = rut.replace(".", "");
-            rut = rut.replace("-", "");
-            int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
-
-            char dv = rut.charAt(rut.length() - 1);
-
-            int m = 0, s = 1;
-            for (; rutAux != 0; rutAux /= 10) {
-                s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
-            }
-            if (dv == (char) (s != 0 ? s + 47 : 75)) {
-                validacion = true;
-            }
-        } catch(Exception e) {
-        }
-        return validacion;
+    public void actualizarExtraviado(int idextraviado, String identificacion, String nombre, String apellido, int colorcabello, int colorpiel, int colorojo, Double medicion, int contextura, int peso, String comentario){
+        ExtraviadoVO extraviadovo = new ExtraviadoVO();
+        ExtraviadoDAO extraviadodao = new ExtraviadoDAO();
+        extraviadovo.setIdentificacion_ex(identificacion);
+        extraviadovo.setNombre_ex(nombre);
+        extraviadovo.setApellido_ex(apellido);
+        extraviadovo.setCabello_ex(colorcabello);
+        extraviadovo.setPiel_ex(colorpiel);
+        extraviadovo.setOjos_ex(colorojo);
+        extraviadovo.setMedicion_ex(medicion);
+        extraviadovo.setContextura_ex(contextura);
+        extraviadovo.setPeso_ex(peso);
+        extraviadovo.setComentario_ex(comentario);
+        extraviadovo.setId_extraviado(idextraviado);
+        extraviadodao.editarExtraviado(extraviadovo);
     }
-=======
-    
->>>>>>> origin/master
 }

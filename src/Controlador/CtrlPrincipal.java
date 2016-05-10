@@ -2,7 +2,7 @@ package Controlador;
 
 import Vista.S0_Principal;
 import Vista.S8_IngresarPersona;
-import Controlador.CtrlIngPersona;
+import Controlador.Pantallas;
 import Modelo.Persona;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,39 +15,31 @@ import javax.swing.UIManager;
  * @author erik
  */
 public class CtrlPrincipal implements ActionListener {
-    S0_Principal vistaPrincipal;
+    S0_Principal ventanaPrincipal;
     
     public CtrlPrincipal(S0_Principal vistaPrincipal) {
-        this.vistaPrincipal = vistaPrincipal;
-        this.vistaPrincipal.btn_ingresarExtraviado.addActionListener(this);
+        this.ventanaPrincipal = vistaPrincipal;
+        this.ventanaPrincipal.btn_ingresarExtraviado.addActionListener(this);
     }
     
     public void Iniciar() {
-        vistaPrincipal.setTitle("Sistema de Búsqueda de Extraviado");
-        vistaPrincipal.pack();
-        vistaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        vistaPrincipal.setLocationRelativeTo(null);
-        vistaPrincipal.setVisible(true);
-        vistaPrincipal.setResizable(false);
+        ventanaPrincipal.setTitle("Principal - Sistema de Búsqueda de Extraviado");
+        ventanaPrincipal.pack();
+        ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        ventanaPrincipal.setLocationRelativeTo(null);
+        ventanaPrincipal.setVisible(true);
+        ventanaPrincipal.setResizable(false);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        if(vistaPrincipal.btn_ingresarExtraviado == e.getSource()){           
+        if(ventanaPrincipal.btn_ingresarExtraviado == e.getSource()){           
             Persona persona = new Persona();
-            S8_IngresarPersona vista = new S8_IngresarPersona();
-            CtrlIngPersona controlador = new CtrlIngPersona(vista, persona) {};
-            //desaparece la pantalla principal
-            vistaPrincipal.setVisible(false);
+            S8_IngresarPersona vistaPersona = new S8_IngresarPersona();
+            CtrlIngPersona ctrlPersona = new CtrlIngPersona(vistaPersona, persona) {};
             
-            controlador.Iniciar();
-            
-            //try {
-//                UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
-//            } catch(Exception ee) {
-//                JOptionPane.showMessageDialog(null, ee);
-//            }
-            
+            ventanaPrincipal.setVisible(false);
+            ctrlPersona.Iniciar();
         }
         
     }

@@ -15,17 +15,17 @@ public class ExtraviadoVO {
     private String identificacion_ex;
     private String nombre_ex;
     private String apellido_ex;
-    private String cabello_ex;
-    private String piel_ex;
-    private String ojos_ex;
+    private int cabello_ex;
+    private int piel_ex;
+    private int ojos_ex;
     private Double medicion_ex;
-    private String contextura_ex;
+    private int contextura_ex;
     private int peso_ex;
     private String comentario_ex;
 
     public ExtraviadoVO() {
     }
-    
+
     public int getId_extraviado() {
         return id_extraviado;
     }
@@ -66,27 +66,27 @@ public class ExtraviadoVO {
         this.apellido_ex = apellido_ex;
     }
 
-    public String getCabello_ex() {
+    public int getCabello_ex() {
         return cabello_ex;
     }
 
-    public void setCabello_ex(String cabello_ex) {
+    public void setCabello_ex(int cabello_ex) {
         this.cabello_ex = cabello_ex;
     }
 
-    public String getPiel_ex() {
+    public int getPiel_ex() {
         return piel_ex;
     }
 
-    public void setPiel_ex(String piel_ex) {
+    public void setPiel_ex(int piel_ex) {
         this.piel_ex = piel_ex;
     }
 
-    public String getOjos_ex() {
+    public int getOjos_ex() {
         return ojos_ex;
     }
 
-    public void setOjos_ex(String ojos_ex) {
+    public void setOjos_ex(int ojos_ex) {
         this.ojos_ex = ojos_ex;
     }
 
@@ -98,11 +98,11 @@ public class ExtraviadoVO {
         this.medicion_ex = medicion_ex;
     }
 
-    public String getContextura_ex() {
+    public int getContextura_ex() {
         return contextura_ex;
     }
 
-    public void setContextura_ex(String contextura_ex) {
+    public void setContextura_ex(int contextura_ex) {
         this.contextura_ex = contextura_ex;
     }
 
