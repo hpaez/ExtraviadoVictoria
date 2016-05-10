@@ -38,7 +38,7 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
         
     }
     
-    public void Iniciar() {
+    public void iniciarPersona() {
         vistaPersona.setTitle("Ingresar Persona - Sistema de Búsqueda de Extraviado");
         vistaPersona.pack();
         vistaPersona.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -68,7 +68,7 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
                             CtrlIngExtraviado ctrlExtraviado = new CtrlIngExtraviado(vistaExtraviado, extraviado) {};
 
                             vistaPersona.setVisible(false);
-                            ctrlExtraviado.Iniciar();
+                            ctrlExtraviado.iniciarExtraviado();
                     } else {
                         JOptionPane.showMessageDialog(null, "El rut ingresado es incorrecto.","Advertencia",JOptionPane.WARNING_MESSAGE);
                     }
@@ -88,7 +88,7 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
             try {
                 S0_Principal vistaPrincipal = new S0_Principal();
                 CtrlPrincipal ctrlPrincipal = new CtrlPrincipal(vistaPrincipal) {};
-                ctrlPrincipal.Iniciar();
+                ctrlPrincipal.iniciarPrincipal();
                 vistaPersona.setVisible(false);
                 } catch(Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);

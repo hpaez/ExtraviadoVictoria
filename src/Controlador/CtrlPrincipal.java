@@ -22,7 +22,7 @@ public class CtrlPrincipal implements ActionListener {
         this.ventanaPrincipal.btn_ingresarExtraviado.addActionListener(this);
     }
     
-    public void Iniciar() {
+    public void iniciarPrincipal() {
         ventanaPrincipal.setTitle("Principal - Sistema de Búsqueda de Extraviado");
         ventanaPrincipal.pack();
         ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -39,7 +39,7 @@ public class CtrlPrincipal implements ActionListener {
             CtrlIngPersona ctrlPersona = new CtrlIngPersona(vistaPersona, persona) {};
             
             ventanaPrincipal.setVisible(false);
-            ctrlPersona.Iniciar();
+            ctrlPersona.iniciarPersona();
         }
         
     }

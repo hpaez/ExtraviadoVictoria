@@ -21,7 +21,7 @@ public class Pantallas {
         
         S0_Principal vista = new S0_Principal();
         CtrlPrincipal controlador = new CtrlPrincipal(vista) {};
-        controlador.Iniciar();
+        controlador.iniciarPrincipal();
     }
     
 }
