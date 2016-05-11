@@ -64,14 +64,18 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
                             personavo.setMovil_per(vistaPersona.txt_movil.getText());
                             personavo.setCorreo_per(vistaPersona.txt_email.getText());
                             personavo.setDireccion_per(vistaPersona.txt_direccion.getText());
-                            ingresarPersona(personavo);
+                            
+                            if (ingresarPersona(personavo)) {
+                                Extraviado extraviado = new Extraviado();
+                                S1_IngresarExtraviado vistaExtraviado = new S1_IngresarExtraviado();
+                                CtrlIngExtraviado ctrlExtraviado = new CtrlIngExtraviado(vistaExtraviado, extraviado) {};
 
-                            Extraviado extraviado = new Extraviado();
-                            S1_IngresarExtraviado vistaExtraviado = new S1_IngresarExtraviado();
-                            CtrlIngExtraviado ctrlExtraviado = new CtrlIngExtraviado(vistaExtraviado, extraviado) {};
-
-                            vistaPersona.setVisible(false);
-                            ctrlExtraviado.iniciarExtraviado();
+                                vistaPersona.setVisible(false);
+                                ctrlExtraviado.iniciarExtraviado();
+                            }else{
+                                limpiarCampos();
+                                JOptionPane.showMessageDialog(null, "Error","Advertencia",JOptionPane.WARNING_MESSAGE);                
+                            }
                     } else {
                         JOptionPane.showMessageDialog(null, "El rut ingresado es incorrecto.","Advertencia",JOptionPane.WARNING_MESSAGE);
                     }
@@ -139,9 +143,17 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
         }
     }
     
-    public void ingresarPersona(PersonaVO personavo) {
+    public boolean ingresarPersona(PersonaVO personavo) {
+        boolean resp = false;
         PersonaDAO personadao = new PersonaDAO();
-        personadao.insertarPersona(personavo);
+        if (personadao.insertarPersona(personavo)){
+            JOptionPane.showMessageDialog(null, "Se ingreso la persona exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
+            resp = true;
+        }else{
+            JOptionPane.showMessageDialog(null, "No se pudo ingresar.","Advertencia",JOptionPane.WARNING_MESSAGE);
+            resp = false;
+        }
+        return resp;
     }
     
     public void limpiarCampos(){     

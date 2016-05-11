@@ -20,8 +20,8 @@ public class PersonaDAO {
         conexion = new Conexion();
     }
     
-    public String insertarPersona(PersonaVO persona) {
-        String rptRegistro = null;
+    public boolean insertarPersona(PersonaVO persona) {
+        boolean rptRegistro = false;
         try {
             Connection accesoDB = conexion.getConexion();
             PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO persona VALUES (?,?,?,?,?,?,?)");
@@ -38,13 +38,40 @@ public class PersonaDAO {
             conexion.Desconectar();
             
             if(numFilasAfectadas>0){
-                JOptionPane.showMessageDialog(null, "Se ingreso la persona exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
+                rptRegistro = true;
+//              JOptionPane.showMessageDialog(null, "Se ingreso la persona exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo ingresar.","Advertencia",JOptionPane.WARNING_MESSAGE);
+            rptRegistro = false;
         }
         return rptRegistro;
     }
+    
+//    public String insertarPersona(PersonaVO persona) {
+//        String rptRegistro = null;
+//        try {
+//            Connection accesoDB = conexion.getConexion();
+//            PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO persona VALUES (?,?,?,?,?,?,?)");
+//            ps.setString(1, persona.getId_persona());
+//            ps.setString(2, persona.getNombre_per());
+//            ps.setString(3, persona.getApellido_per());
+//            ps.setString(4, persona.getFijo_per());
+//            ps.setString(5, persona.getMovil_per());
+//            ps.setString(6, persona.getCorreo_per());
+//            ps.setString(7, persona.getDireccion_per());
+//            
+//            int numFilasAfectadas = ps.executeUpdate();
+//            ps.close();
+//            conexion.Desconectar();
+//            
+//            if(numFilasAfectadas>0){
+//                JOptionPane.showMessageDialog(null, "Se ingreso la persona exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
+//            }
+//        } catch (Exception e) {
+//            JOptionPane.showMessageDialog(null, "No se pudo ingresar.","Advertencia",JOptionPane.WARNING_MESSAGE);
+//        }
+//        return rptRegistro;
+//    }
     
     public boolean verificaPersona(String id) {
         boolean resultado = false;
