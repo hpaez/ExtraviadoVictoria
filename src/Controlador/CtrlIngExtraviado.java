@@ -1,8 +1,9 @@
 package Controlador;
 
 import Modelo.Extraviado;
-import Modelo.ExtraviadoDAO;
-import Modelo.ExtraviadoVO;
+import Datos.ExtraviadoDAO;
+import Datos.*;
+import Modelo.*;
 import Vista.S1_IngresarExtraviado;
 import Vista.S8_IngresarPersona;
 import java.awt.event.*;
@@ -13,6 +14,9 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
     private S1_IngresarExtraviado vistaExtraviado = null;
     private S8_IngresarPersona vistaPersona = null;
     private Extraviado modeloExtraviado = null;
+    private CtrlIngExtraviado control_ex;
+    public CtrlIngPersona control_pe;
+    public Persona persona;
     
     public CtrlIngExtraviado(S1_IngresarExtraviado vistaExtraviado, Extraviado modeloIngreso) {
         this.modeloExtraviado = modeloIngreso;
@@ -24,6 +28,7 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         this.vistaExtraviado.radio_rut.addActionListener(this);
         this.vistaExtraviado.radio_pasaporte.addActionListener(this);
         this.vistaExtraviado.radio_noAplica.addActionListener(this);
+        this.vistaExtraviado.btn_prueba.addActionListener(this);
     }
     
     public void iniciarExtraviado() {
@@ -110,6 +115,12 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
             } catch(Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }
+        }
+        
+        if(vistaExtraviado.btn_prueba == e.getSource()){
+            
+            System.out.println(control_pe.persona.getRut().toString());
+            
         }
         
         /*habilita campo de texto rut,pasaporte,aplica al momento de seleccionar uno,sino queda desabilitado*/

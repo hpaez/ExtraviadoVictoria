@@ -1,9 +1,9 @@
 package Controlador;
 
 import Modelo.Extraviado;
-import Modelo.PersonaVO;
+import Datos.PersonaVO;
 import Modelo.Persona;
-import Modelo.PersonaDAO;
+import Datos.PersonaDAO;
 import Vista.S0_Principal;
 import Vista.S1_IngresarExtraviado;
 import Vista.S8_IngresarPersona;
@@ -13,7 +13,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
 
 /**
  *
@@ -21,12 +20,11 @@ import javax.swing.JRootPane;
  */
 public class CtrlIngPersona implements ActionListener,KeyListener {
     private S8_IngresarPersona vistaPersona;
-    private Persona persona;
-    CtrlIngPersona ctrlPersona;
+    public CtrlIngPersona ctrlPersona;
+    public Persona persona;
     
     public CtrlIngPersona(S8_IngresarPersona vistaPersona, Persona persona) {
         this.vistaPersona = vistaPersona;
-        this.persona = persona;
         
         //action listener
         this.vistaPersona.btn_guardar.addActionListener(this);
@@ -54,31 +52,65 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
     public void actionPerformed(ActionEvent e) {
         if(vistaPersona.btn_guardar == e.getSource()) {
             try {
-                if(!vistaPersona.txt_rut.getText().trim().equals("") && !vistaPersona.txt_nombres.getText().trim().equals("") && !vistaPersona.txt_apellidos.getText().trim().equals("") && !vistaPersona.txt_direccion.getText().trim().equals("") && (!vistaPersona.txt_fijo.getText().trim().equals("") || !vistaPersona.txt_movil.getText().trim().equals(""))){
-                    if(validarRut(vistaPersona.txt_rut.getText()) == true){
-                            PersonaVO personavo=new PersonaVO();
-                            personavo.setId_persona(vistaPersona.txt_rut.getText());
-                            personavo.setNombre_per(vistaPersona.txt_nombres.getText());
-                            personavo.setApellido_per(vistaPersona.txt_apellidos.getText());
-                            personavo.setFijo_per(vistaPersona.txt_fijo.getText());
-                            personavo.setMovil_per(vistaPersona.txt_movil.getText());
-                            personavo.setCorreo_per(vistaPersona.txt_email.getText());
-                            personavo.setDireccion_per(vistaPersona.txt_direccion.getText());
-                            
-                            if (ingresarPersona(personavo)) {
-                                Extraviado extraviado = new Extraviado();
-                                S1_IngresarExtraviado vistaExtraviado = new S1_IngresarExtraviado();
-                                CtrlIngExtraviado ctrlExtraviado = new CtrlIngExtraviado(vistaExtraviado, extraviado) {};
+//                if(!vistaPersona.txt_rut.getText().trim().equals("") 
+//                        && !vistaPersona.txt_nombres.getText().trim().equals("") 
+//                        && !vistaPersona.txt_apellidos.getText().trim().equals("") 
+//                        && !vistaPersona.txt_direccion.getText().trim().equals("") 
+//                        && (!vistaPersona.txt_fijo.getText().trim().equals("") 
+//                        || !vistaPersona.txt_movil.getText().trim().equals(""))){
+//                    if(validarRut(vistaPersona.txt_rut.getText()) == true){
+//                            PersonaVO personavo=new PersonaVO();
+//                            personavo.setId_persona(vistaPersona.txt_rut.getText());
+//                            personavo.setNombre_per(vistaPersona.txt_nombres.getText());
+//                            personavo.setApellido_per(vistaPersona.txt_apellidos.getText());
+//                            personavo.setFijo_per(vistaPersona.txt_fijo.getText());
+//                            personavo.setMovil_per(vistaPersona.txt_movil.getText());
+//                            personavo.setCorreo_per(vistaPersona.txt_email.getText());
+//                            personavo.setDireccion_per(vistaPersona.txt_direccion.getText());
+//                            
+//                            if (ingresarPersona(personavo)) {
+//                                Extraviado extraviado = new Extraviado();
+//                                S1_IngresarExtraviado vistaExtraviado = new S1_IngresarExtraviado();
+//                                CtrlIngExtraviado ctrlExtraviado = new CtrlIngExtraviado(vistaExtraviado, extraviado) {};
+//
+//                                vistaPersona.setVisible(false);
+//                                ctrlExtraviado.iniciarExtraviado();
+//                            }else{
+//                                limpiarCampos();
+//                            }
+//                    } else {
+//                        JOptionPane.showMessageDialog(null, "El rut ingresado es incorrecto.","Advertencia",JOptionPane.WARNING_MESSAGE);
+//                    }
+//                } 
+                if(!vistaPersona.txt_rut.getText().trim().equals("") 
+                        && !vistaPersona.txt_nombres.getText().trim().equals("") 
+                        && !vistaPersona.txt_apellidos.getText().trim().equals("") 
+                        && !vistaPersona.txt_direccion.getText().trim().equals("") 
+                        && (!vistaPersona.txt_fijo.getText().trim().equals("") 
+                        || !vistaPersona.txt_movil.getText().trim().equals(""))){
+                    if(validarRut(vistaPersona.txt_rut.getText())){
+                        String _rut = vistaPersona.txt_rut.getText();
+                        String _nombre = vistaPersona.txt_nombres.getText().trim();
+                        String _apellido = vistaPersona.txt_apellidos.getText();
+                        String _fijo = vistaPersona.txt_fijo.getText();
+                        String _movil = vistaPersona.txt_movil.getText();
+                        String _correo = vistaPersona.txt_email.getText();
+                        String _direc = vistaPersona.txt_direccion.getText();
 
-                                vistaPersona.setVisible(false);
-                                ctrlExtraviado.iniciarExtraviado();
-                            }else{
-                                limpiarCampos();
-                            }
-                    } else {
+                        Persona persona = new Persona(_rut,_nombre,_apellido,_fijo,_movil,_correo,_direc);
+                        
+                        
+                        Extraviado extraviado = new Extraviado();
+                        S1_IngresarExtraviado vistaExtraviado = new S1_IngresarExtraviado();
+                        CtrlIngExtraviado ctrlExtraviado = new CtrlIngExtraviado(vistaExtraviado, extraviado) {};
+
+                        vistaPersona.setVisible(false);
+                        ctrlExtraviado.iniciarExtraviado();
+                    }else {
                         JOptionPane.showMessageDialog(null, "El rut ingresado es incorrecto.","Advertencia",JOptionPane.WARNING_MESSAGE);
                     }
-                } else {
+                }
+                else {
                     JOptionPane.showMessageDialog(null, "Hay campos que no fueron ingresados.","Advertencia",JOptionPane.WARNING_MESSAGE);
                 }    
             } catch(Exception ex) {
