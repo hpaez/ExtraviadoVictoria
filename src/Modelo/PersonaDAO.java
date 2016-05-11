@@ -21,7 +21,7 @@ public class PersonaDAO {
     }
     
     public boolean insertarPersona(PersonaVO persona) {
-        boolean rptRegistro = false;
+        boolean resultado = false;
         try {
             Connection accesoDB = conexion.getConexion();
             PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO persona VALUES (?,?,?,?,?,?,?)");
@@ -38,40 +38,13 @@ public class PersonaDAO {
             conexion.Desconectar();
             
             if(numFilasAfectadas>0){
-                rptRegistro = true;
-//              JOptionPane.showMessageDialog(null, "Se ingreso la persona exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
+                resultado = true;
             }
         } catch (Exception e) {
-            rptRegistro = false;
+            resultado = false;
         }
-        return rptRegistro;
+        return resultado;
     }
-    
-//    public String insertarPersona(PersonaVO persona) {
-//        String rptRegistro = null;
-//        try {
-//            Connection accesoDB = conexion.getConexion();
-//            PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO persona VALUES (?,?,?,?,?,?,?)");
-//            ps.setString(1, persona.getId_persona());
-//            ps.setString(2, persona.getNombre_per());
-//            ps.setString(3, persona.getApellido_per());
-//            ps.setString(4, persona.getFijo_per());
-//            ps.setString(5, persona.getMovil_per());
-//            ps.setString(6, persona.getCorreo_per());
-//            ps.setString(7, persona.getDireccion_per());
-//            
-//            int numFilasAfectadas = ps.executeUpdate();
-//            ps.close();
-//            conexion.Desconectar();
-//            
-//            if(numFilasAfectadas>0){
-//                JOptionPane.showMessageDialog(null, "Se ingreso la persona exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
-//            }
-//        } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "No se pudo ingresar.","Advertencia",JOptionPane.WARNING_MESSAGE);
-//        }
-//        return rptRegistro;
-//    }
     
     public boolean verificaPersona(String id) {
         boolean resultado = false;
@@ -86,11 +59,9 @@ public class PersonaDAO {
             
             if(numFilasAfectadas>0){
                 resultado = true;
-                JOptionPane.showMessageDialog(null, "Verificado","Sucess",JOptionPane.DEFAULT_OPTION);
             }
         } catch (Exception e) {
                 resultado = false;
-//            JOptionPane.showMessageDialog(null, "No se pudo verificar","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
         return resultado;
     }
@@ -119,8 +90,8 @@ public class PersonaDAO {
         return listaPersona;
     }
     
-    public int editarPersona(PersonaVO persona) {
-        int filAfectadas=0;
+    public boolean editarPersona(PersonaVO persona) {
+        boolean resultado = false;
         try {
             Connection accesoDB = conexion.getConexion();
             PreparedStatement ps = accesoDB.prepareStatement("UPDATE persona SET NOMBREPERSONA=?, APELLIDOPERSONA=?, TELEFONOFIJOPERSONA=?, TELEFONOMOVILPERSONA=?, CORREOPERSONA=?, DIRECCIONPERSONA=? WHERE IDPERSONA=?");
@@ -131,13 +102,16 @@ public class PersonaDAO {
             ps.setString(5, persona.getCorreo_per());
             ps.setString(6, persona.getDireccion_per());
             ps.setString(6, persona.getId_persona());
-            filAfectadas = ps.executeUpdate();
+            int numFilasAfectadas = ps.executeUpdate();
             ps.close();
             conexion.Desconectar();
-            JOptionPane.showMessageDialog(null, "Se actualizo la persona exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
+            
+            if(numFilasAfectadas>0){
+                resultado = true;
+            }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo actualizar","Advertencia",JOptionPane.WARNING_MESSAGE);
+            resultado = false;
         }
-        return filAfectadas;  
+        return resultado;  
     }
 }

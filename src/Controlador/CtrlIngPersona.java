@@ -74,7 +74,6 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
                                 ctrlExtraviado.iniciarExtraviado();
                             }else{
                                 limpiarCampos();
-                                JOptionPane.showMessageDialog(null, "Error","Advertencia",JOptionPane.WARNING_MESSAGE);                
                             }
                     } else {
                         JOptionPane.showMessageDialog(null, "El rut ingresado es incorrecto.","Advertencia",JOptionPane.WARNING_MESSAGE);
@@ -107,17 +106,15 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
     public void keyTyped(KeyEvent e) {
         //solo numeros para campo telefono y movil
         try{
-            if (vistaPersona.txt_fijo == e.getSource() 
-                    || vistaPersona.txt_movil == e.getSource()) {
-            try{
-                if (!(Character.isDigit(e.getKeyChar())))
-                e.consume();        
-            }catch(Exception ex){
-                //
-            }
+            if (vistaPersona.txt_fijo == e.getSource() || vistaPersona.txt_movil == e.getSource()) {
+                try{
+                    if (!(Character.isDigit(e.getKeyChar()))){
+                        e.consume();
+                    }
+                }catch(Exception ex){
+                }
             }
         }catch (Exception ex){
-            
         }    
         //limite de caracteres
 //        if (_campo.length() == _limitecaracteres) {
@@ -128,18 +125,14 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
     @Override
     public void keyPressed(KeyEvent e) {
         try {
-            
         }catch(Exception ex) {
-            
         }    
     }
 
     @Override
     public void keyReleased(KeyEvent e) {
         try {
-            
         }catch(Exception ex) {
-            
         }
     }
     
