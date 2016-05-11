@@ -86,9 +86,11 @@ public class PersonaDAO {
             
             if(numFilasAfectadas>0){
                 resultado = true;
+                JOptionPane.showMessageDialog(null, "Verificado","Sucess",JOptionPane.DEFAULT_OPTION);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo actualizar","Advertencia",JOptionPane.WARNING_MESSAGE);
+                resultado = false;
+//            JOptionPane.showMessageDialog(null, "No se pudo verificar","Advertencia",JOptionPane.WARNING_MESSAGE);
         }
         return resultado;
     }
