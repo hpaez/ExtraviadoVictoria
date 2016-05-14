@@ -20,8 +20,6 @@ public class Pantallas {
         }
         
         S0_Principal ven_principal = new S0_Principal();
-        S1_IngresarExtraviado ing_extraviado = new S1_IngresarExtraviado();
-        S8_IngresarPersona ing_persona = new S8_IngresarPersona();
         
         CtrlPrincipal controlador = new CtrlPrincipal(ven_principal) {};
         

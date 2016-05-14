@@ -13,7 +13,6 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import javax.swing.JRootPane;
 
 /**
  *
@@ -42,12 +41,9 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
     public void iniciarPersona() {
         vistaPersona.setTitle("Ingresar Persona - Sistema de Búsqueda de Extraviado");
         vistaPersona.pack();
-        vistaPersona.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         vistaPersona.setLocationRelativeTo(null);
         vistaPersona.setVisible(true);
         vistaPersona.setResizable(false);
-        
-        vistaPersona.setDefaultCloseOperation(0);
     }
     
     @Override

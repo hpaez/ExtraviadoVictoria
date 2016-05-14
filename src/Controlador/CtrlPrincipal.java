@@ -25,7 +25,6 @@ public class CtrlPrincipal implements ActionListener {
     public void iniciarPrincipal() {
         ventanaPrincipal.setTitle("Principal - Sistema de Búsqueda de Extraviado");
         ventanaPrincipal.pack();
-        ventanaPrincipal.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         ventanaPrincipal.setLocationRelativeTo(null);
         ventanaPrincipal.setVisible(true);
         ventanaPrincipal.setResizable(false);
@@ -43,5 +42,4 @@ public class CtrlPrincipal implements ActionListener {
         }
         
     }
-    
 }

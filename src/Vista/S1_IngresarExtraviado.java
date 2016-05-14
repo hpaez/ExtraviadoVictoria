@@ -1,5 +1,7 @@
 package Vista;
 
+import javax.swing.JOptionPane;
+
 
 /**
  *
@@ -67,7 +69,12 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -266,7 +273,19 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        salir();
+    }//GEN-LAST:event_formWindowClosing
   
+    private void salir() {
+        int p = JOptionPane.showConfirmDialog(null, "¿Desea salir de la aplicación?", "Salir", JOptionPane.YES_NO_OPTION);
+        if (p == 0) {
+            System.exit(0);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btn_ingresar;
     public static javax.swing.JButton btn_limpiar;

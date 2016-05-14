@@ -5,6 +5,8 @@
  */
 package Vista;
 
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author erik
@@ -49,6 +51,11 @@ public class S8_IngresarPersona extends javax.swing.JFrame {
         btn_cancelar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Datos del Solicitante", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 12))); // NOI18N
 
@@ -191,6 +198,18 @@ public class S8_IngresarPersona extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        // TODO add your handling code here:
+        salir();
+    }//GEN-LAST:event_formWindowClosing
+
+    private void salir() {
+        int p = JOptionPane.showConfirmDialog(null, "¿Desea salir de la aplicación?", "Salir", JOptionPane.YES_NO_OPTION);
+        if (p == 0) {
+            System.exit(0);
+        }
+    }
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_cancelar;
     public javax.swing.JButton btn_guardar;
