@@ -8,7 +8,7 @@ import java.util.Date;
  */
 public class CasoVO {
     private int IDCASO;
-    private int IDEXTRAVIADO;
+    private String IDEXTRAVIADO;
     private String IDPERSONA;
     private String ESTADOCASO;
     private Date FECHACASO;
@@ -16,7 +16,7 @@ public class CasoVO {
     public CasoVO() {
     }
 
-    public CasoVO(int IDCASO, int IDEXTRAVIADO, String IDPERSONA, String ESTADOCASO, Date FECHACASO) {
+    public CasoVO(int IDCASO, String IDEXTRAVIADO, String IDPERSONA, String ESTADOCASO, Date FECHACASO) {
         this.IDCASO = IDCASO;
         this.IDEXTRAVIADO = IDEXTRAVIADO;
         this.IDPERSONA = IDPERSONA;
@@ -32,11 +32,11 @@ public class CasoVO {
         this.IDCASO = IDCASO;
     }
 
-    public int getIDEXTRAVIADO() {
+    public String getIDEXTRAVIADO() {
         return IDEXTRAVIADO;
     }
 
-    public void setIDEXTRAVIADO(int IDEXTRAVIADO) {
+    public void setIDEXTRAVIADO(String IDEXTRAVIADO) {
         this.IDEXTRAVIADO = IDEXTRAVIADO;
     }
 

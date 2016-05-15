@@ -16,8 +16,8 @@ public class ExtraviadoDAO {
         conexion = new Conexion();
     }
     
-    public String insertarExtraviado(ExtraviadoVO extraviado) {
-        String rptRegistro = null;
+        public boolean insertarExtraviado(ExtraviadoVO extraviado) {
+        boolean rptRegistro = false;
         try {
             Connection accesoDB = conexion.getConexion();
             PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO extraviado(IDPERSONA,IDENTIFICACIONEXTRAVIAD,NOMBREEXTRAVIADO,APELLIDOSEXTRAVIADO,COLORCABELLOEXTRAVIADO,COLORPIELEXTRAVIADO,COLOROJOSEXTRAVIADO,MEDICIONEXTRAVIADO,CONTEXTURAEXTRAVIADO,PESOEXTRAVIADO,COMENTARIOEXTRAVIADO) VALUES (?,?,?,?,?,?,?,?,?,?,?)");
@@ -38,10 +38,12 @@ public class ExtraviadoDAO {
             conexion.Desconectar();
             
             if(numFilasAfectadas>0){
-                JOptionPane.showMessageDialog(null, "Se ingreso el extraviado exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
+                return rptRegistro = true;
+//                JOptionPane.showMessageDialog(null, "Se ingreso el extraviado exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
             }
         } catch (Exception e) {
-            JOptionPane.showMessageDialog(null, "No se pudo ingresar.");
+            return rptRegistro = false;
+//            JOptionPane.showMessageDialog(null, "No se pudo ingresar.");
         }
         return rptRegistro;
     }

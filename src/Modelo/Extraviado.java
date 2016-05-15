@@ -12,14 +12,14 @@ public class Extraviado {
     private int colorPelo;
     private int colorOjos;
     private double estatura;
-    private String contextura;
+    private int contextura;
     private int peso;
     private String comentario;
     
     public Extraviado() {
     }
 
-    public Extraviado(String identificador, String nombre, String apellido, int colorPiel, int colorPelo, int colorOjos, double estatura, String contextura, int peso, String comentario) {
+    public Extraviado(String identificador, String nombre, String apellido, int colorPiel, int colorPelo, int colorOjos, double estatura, int contextura, int peso, String comentario) {
         this.identificador = identificador;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -88,11 +88,11 @@ public class Extraviado {
         this.estatura = estatura;
     }
 
-    public String getContextura() {
+    public int getContextura() {
         return contextura;
     }
 
-    public void setContextura(String contextura) {
+    public void setContextura(int contextura) {
         this.contextura = contextura;
     }
 

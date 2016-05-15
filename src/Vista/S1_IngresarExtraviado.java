@@ -59,7 +59,6 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
         combo_contextura = new javax.swing.JComboBox();
         btn_ingresar = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
-        btn_prueba = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
 
@@ -228,8 +227,6 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
 
         btn_limpiar.setText("Limpiar");
 
-        btn_prueba.setText("jButton1");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -241,8 +238,6 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
                         .addGap(30, 30, 30)
                         .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_prueba)
-                        .addGap(58, 58, 58)
                         .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -259,8 +254,7 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(btn_ingresar, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(btn_prueba))
+                    .addComponent(btn_ingresar, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -299,7 +293,6 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btn_ingresar;
     public static javax.swing.JButton btn_limpiar;
-    public static javax.swing.JButton btn_prueba;
     public static javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JComboBox combo_cOjos;
     public javax.swing.JComboBox combo_cPelo;

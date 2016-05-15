@@ -5,7 +5,9 @@ import Modelo.Conexion;
 import Modelo.Extraviado;
 import Modelo.Persona;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 
 /**
@@ -19,27 +21,50 @@ public class CasoDAO {
         conexion = new Conexion();
     }
     
-    public String insertarCaso(Caso caso,Extraviado extraviado,Persona persona) {
-        String rptRegistro = null;
+    public boolean insertarCaso(CasoVO caso,ExtraviadoVO extraviado,PersonaVO persona) {
+        boolean rptRegistro = false;
+        String dato="";
         try {
             Connection accesoDB = conexion.getConexion();
-            PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO caso(IDEXTRAVIADO,IDPERSONA,ESTADOCASO,FECHACASO) VALUES (?,?,?)");
-            ps.setString(1, extraviado.getIdentificador());
-            ps.setString(2, persona.getRut());
-            ps.setString(3, caso.getEstado());
-            ps.setString(4, caso.getFecha().toString());
-                
-            int numFilasAfectadas = ps.executeUpdate();
-            ps.close();
-            conexion.Desconectar();
+            PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO caso(IDEXTRAVIADO,IDPERSONA,ESTADOCASO,FECHACASO) VALUES (?,?,?,?)");
+            dato = verificarCasoExtraviado(extraviado.getIdentificacion_ex());
+                ps.setString(1, dato);
+                ps.setString(2, persona.getId_persona());
+                ps.setString(3, caso.getESTADOCASO());
+                ps.setDate(4, (Date) caso.getFECHACASO());
+              
+                int numFilasAfectadas = ps.executeUpdate();
+                ps.close();
+                conexion.Desconectar();
             
-            if(numFilasAfectadas>0){
-//                JOptionPane.showMessageDialog(null, "Se ingreso el extraviado exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
-            }
+                if(numFilasAfectadas>0){
+                    return true;
+                }
+            
         } catch (Exception e) {
-//            JOptionPane.showMessageDialog(null, "No se pudo ingresar.");
+            return false;
         }
         return rptRegistro;
+    }
+    //************CORREGIR ESTO
+     public String verificarCasoExtraviado(String id) {
+        String resultado = "";
+        Connection accesoDB = conexion.getConexion();
+        try {
+            PreparedStatement ps = accesoDB.prepareStatement("SELECT idextraviado FROM extraviado WHERE IDENTIFICACIONEXTRAVIAD = '?'");
+            ps.setString(1, id);
+            
+            ResultSet rs = ps.executeQuery();
+            while(rs.next()){
+                resultado = rs.getString(1);
+            }
+            ps.close();
+            conexion.Desconectar();
+            return resultado;
+            
+        } catch (Exception e) {
+             return null;
+        }
     }
     
 //    public CasoVO select(String id) {

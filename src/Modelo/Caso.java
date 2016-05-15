@@ -7,7 +7,7 @@ import java.util.Date;
  * @author erik
  */
 public class Caso {
-    private String estado="Desaparecido";
+    private String estado;
     private Date fecha;
 
     public Caso() {
