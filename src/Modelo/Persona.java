@@ -8,6 +8,10 @@ import java.util.ArrayList;
  * @author erik
  */
 public class Persona {
+
+    public static void setPersona(Persona persona) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     private String rut;
     private String nombres;
     private String apellidos;
@@ -95,4 +99,9 @@ public class Persona {
     public static void setPersona(ArrayList<Persona> persona) {
         Persona.persona = persona;
     }
+    
+    
+
 }
+
+

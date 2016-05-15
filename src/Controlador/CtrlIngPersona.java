@@ -11,6 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
@@ -57,20 +58,23 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
                     if(validarRut(vistaPersona.txt_rut.getText())){
                         int p = JOptionPane.showConfirmDialog(null, "¿Desea pasar a la siguente pantalla?", "Advertencia", JOptionPane.YES_NO_OPTION);
                         if (p == 0) {
-                            String rut = vistaPersona.txt_rut.getText();
+                            String rut = CtrlIngExtraviado.formatear(vistaPersona.txt_rut.getText());
                             String nombre = vistaPersona.txt_nombres.getText().trim();
                             String apellido = vistaPersona.txt_apellidos.getText();
                             String fijo = vistaPersona.txt_fijo.getText();
                             String movil = vistaPersona.txt_movil.getText();
                             String correo = vistaPersona.txt_email.getText();
                             String direc = vistaPersona.txt_direccion.getText();
-                            persona = new Persona(rut, nombre, apellido, fijo, movil, correo, direc);
+                            
+                            Persona persona = new Persona(rut, nombre, apellido, fijo, movil, correo, direc);
                             
                             Extraviado extraviado = new Extraviado();
+                            
                             S1_IngresarExtraviado vistaExtraviado = new S1_IngresarExtraviado();
-                            CtrlIngExtraviado ctrlExtraviado = new CtrlIngExtraviado(vistaExtraviado, extraviado) {};
-
-                            vistaPersona.setVisible(false);
+                            CtrlIngExtraviado ctrlExtraviado = new CtrlIngExtraviado(vistaExtraviado, extraviado,persona) {};
+                            
+                            vistaPersona.dispose();
+                            
                             ctrlExtraviado.iniciarExtraviado();
                         }
                     }else {

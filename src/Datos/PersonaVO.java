@@ -12,7 +12,7 @@ import Modelo.Persona;
  * @author DerKow
  */
 public class PersonaVO {
-private String id_persona;
+    private String id_persona;
     private String nombre_per;
     private String apellido_per;
     private String fijo_per;
@@ -97,4 +97,5 @@ private String id_persona;
     public void setDireccion_per(String direccion_per) {
         this.direccion_per = direccion_per;
     }
+
 }
