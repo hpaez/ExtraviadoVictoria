@@ -1,11 +1,13 @@
 package Controlador;
 
 import Modelo.Extraviado;
-import Modelo.ExtraviadoDAO;
-import Modelo.ExtraviadoVO;
+import Datos.ExtraviadoDAO;
+import Datos.*;
+import Modelo.*;
 import Vista.S1_IngresarExtraviado;
 import Vista.S8_IngresarPersona;
 import java.awt.event.*;
+import java.util.ArrayList;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
@@ -13,9 +15,11 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
     private S1_IngresarExtraviado vistaExtraviado = null;
     private S8_IngresarPersona vistaPersona = null;
     private Extraviado modeloExtraviado = null;
+    private CtrlIngExtraviado control_ex;
+    public Persona modeloPersona;
     
     public CtrlIngExtraviado(S1_IngresarExtraviado vistaExtraviado, Extraviado modeloIngreso) {
-        this.modeloExtraviado = modeloIngreso;
+        this.modeloExtraviado   = modeloIngreso;
         this.vistaExtraviado    = vistaExtraviado;
         
         this.vistaExtraviado.btn_ingresar.addActionListener(this);
@@ -24,6 +28,7 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         this.vistaExtraviado.radio_rut.addActionListener(this);
         this.vistaExtraviado.radio_pasaporte.addActionListener(this);
         this.vistaExtraviado.radio_noAplica.addActionListener(this);
+        this.vistaExtraviado.btn_prueba.addActionListener(this);
     }
     
     public void iniciarExtraviado() {
@@ -40,63 +45,40 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
     public void actionPerformed(ActionEvent e) {
         if(vistaExtraviado.btn_ingresar == e.getSource()) {
             try {
-                if(vistaExtraviado.buttonGroup1.getSelection() == null || !vistaExtraviado.txt_nombre.getText().trim().equals("") || !vistaExtraviado.txt_apellidos.getText().trim().equals("") || vistaExtraviado.combo_cOjos.getSelectedIndex() > 0 || vistaExtraviado.combo_cPelo.getSelectedIndex() > 0 || vistaExtraviado.combo_cPiel.getSelectedIndex() > 0 || vistaExtraviado.combo_contextura.getSelectedIndex() > 0){
-                    if(vistaExtraviado.radio_rut.isSelected() == true && !vistaExtraviado.txt_radioOption.getText().trim().equals("")){
-                        if(validarRut(vistaExtraviado.txt_radioOption.getText())){
-                            ExtraviadoVO extraviadovo=new ExtraviadoVO();
-                            extraviadovo.setId_persona(vistaPersona.txt_rut.getText());
-                            extraviadovo.setIdentificacion_ex(vistaExtraviado.txt_radioOption.getText());
-                            extraviadovo.setNombre_ex(vistaExtraviado.txt_nombre.getText());
-                            extraviadovo.setApellido_ex(vistaExtraviado.txt_apellidos.getText());
-                            extraviadovo.setCabello_ex(vistaExtraviado.combo_cPelo.getSelectedIndex());
-                            extraviadovo.setPiel_ex(vistaExtraviado.combo_cPiel.getSelectedIndex());
-                            extraviadovo.setOjos_ex(vistaExtraviado.combo_cOjos.getSelectedIndex());
-                            extraviadovo.setMedicion_ex(Double.parseDouble(vistaExtraviado.txt_altura.getText()));
-                            extraviadovo.setContextura_ex(vistaExtraviado.combo_contextura.getSelectedIndex());
-                            extraviadovo.setPeso_ex(Integer.parseInt(vistaExtraviado.txt_peso.getText()));
-                            extraviadovo.setComentario_ex(vistaExtraviado.textarea_comentario.getText());
-                            ingresarExtraviado(extraviadovo);
+                if(vistaExtraviado.buttonGroup1.getSelection() == null &&
+                        !vistaExtraviado.txt_nombre.getText().trim().equals("") &&
+                        !vistaExtraviado.txt_apellidos.getText().trim().equals("") &&
+                        vistaExtraviado.combo_cOjos.getSelectedIndex() > 0 &&
+                        vistaExtraviado.combo_cPelo.getSelectedIndex() > 0 &&
+                        vistaExtraviado.combo_cPiel.getSelectedIndex() > 0 &&
+                        vistaExtraviado.combo_contextura.getSelectedIndex() > 0){
+                    if(vistaExtraviado.radio_rut.isSelected() == true){
+                        if(!vistaExtraviado.txt_radioOption.getText().trim().equals("")){
+                            if(validarRut(vistaExtraviado.txt_radioOption.getText())){
+                                int p = JOptionPane.showConfirmDialog(null, "¿Desea guardar los datos del extraviado?", "Advertencia", JOptionPane.YES_NO_OPTION);
+                                if (p == 0) {
+                                    
+                                }
+                            } else {
+                                JOptionPane.showMessageDialog(null, "Debe ingresar el rut.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                            }
                         } else {
-                            JOptionPane.showMessageDialog(null, "Debe ingresar un rut válido.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                            JOptionPane.showMessageDialog(null, "El rut ingresado no es valido.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                        }
+                    } else if(vistaExtraviado.radio_pasaporte.isSelected() == true) {
+                        if(vistaExtraviado.txt_radioOption.getText().trim().equals("")){
+                            int p = JOptionPane.showConfirmDialog(null, "¿Desea guardar los datos del extraviado?", "Advertencia", JOptionPane.YES_NO_OPTION);
+                            if (p == 0) {
+
+                            }
+                        } else {
+                            JOptionPane.showMessageDialog(null, "Debe ingresar el pasaporte.","Advertencia",JOptionPane.WARNING_MESSAGE);
                         }
                     } else {
-                        JOptionPane.showMessageDialog(null, "Debe ingresar un rut.","Advertencia",JOptionPane.WARNING_MESSAGE);
-                    }
-                    
-                    if(vistaExtraviado.radio_pasaporte.isSelected() == true && !vistaExtraviado.txt_radioOption.getText().trim().equals("")){
-                        ExtraviadoVO extraviadovo=new ExtraviadoVO();
-                        extraviadovo.setId_persona(vistaPersona.txt_rut.getText());
-                        extraviadovo.setIdentificacion_ex(vistaExtraviado.txt_radioOption.getText());
-                        extraviadovo.setNombre_ex(vistaExtraviado.txt_nombre.getText());
-                        extraviadovo.setApellido_ex(vistaExtraviado.txt_apellidos.getText());
-                        extraviadovo.setCabello_ex(vistaExtraviado.combo_cPelo.getSelectedIndex());
-                        extraviadovo.setPiel_ex(vistaExtraviado.combo_cPiel.getSelectedIndex());
-                        extraviadovo.setOjos_ex(vistaExtraviado.combo_cOjos.getSelectedIndex());
-                        extraviadovo.setMedicion_ex(Double.parseDouble(vistaExtraviado.txt_altura.getText()));
-                        extraviadovo.setContextura_ex(vistaExtraviado.combo_contextura.getSelectedIndex());
-                        extraviadovo.setPeso_ex(Integer.parseInt(vistaExtraviado.txt_peso.getText()));
-                        extraviadovo.setComentario_ex(vistaExtraviado.textarea_comentario.getText());
-                        ingresarExtraviado(extraviadovo);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Debe escribir su pasaporte","Advertencia",JOptionPane.WARNING_MESSAGE);
-                    }
-                    
-                    if(vistaExtraviado.radio_noAplica.isSelected() == true){
-                        ExtraviadoVO extraviadovo=new ExtraviadoVO();
-                        extraviadovo.setId_persona(vistaPersona.txt_rut.getText());
-                        extraviadovo.setIdentificacion_ex(vistaExtraviado.txt_radioOption.getText());
-                        extraviadovo.setNombre_ex(vistaExtraviado.txt_nombre.getText());
-                        extraviadovo.setApellido_ex(vistaExtraviado.txt_apellidos.getText());
-                        extraviadovo.setCabello_ex(vistaExtraviado.combo_cPelo.getSelectedIndex());
-                        extraviadovo.setPiel_ex(vistaExtraviado.combo_cPiel.getSelectedIndex());
-                        extraviadovo.setOjos_ex(vistaExtraviado.combo_cOjos.getSelectedIndex());
-                        extraviadovo.setMedicion_ex(Double.parseDouble(vistaExtraviado.txt_altura.getText()));
-                        extraviadovo.setContextura_ex(vistaExtraviado.combo_contextura.getSelectedIndex());
-                        extraviadovo.setPeso_ex(Integer.parseInt(vistaExtraviado.txt_peso.getText()));
-                        extraviadovo.setComentario_ex(vistaExtraviado.textarea_comentario.getText());
-                        ingresarExtraviado(extraviadovo);
-                    } else {
-                        JOptionPane.showMessageDialog(null, "Hubo un problema, debe seleccionar su identificador.","Advertencia",JOptionPane.WARNING_MESSAGE);
+                        int p = JOptionPane.showConfirmDialog(null, "¿Desea guardar los datos del extraviado?", "Advertencia", JOptionPane.YES_NO_OPTION);
+                        if (p == 0) {
+
+                        }
                     }
                 } else {
                     JOptionPane.showMessageDialog(null, "Hay campos que no fueron ingresados.","Advertencia",JOptionPane.WARNING_MESSAGE);
@@ -106,7 +88,27 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
             }
         } else if(vistaExtraviado.btn_limpiar == e.getSource()) {
             try {
-               limpiarCampos();
+                int p = JOptionPane.showConfirmDialog(null, "¿Desea limpiar todos los datos ingresado?", "Advertencia", JOptionPane.YES_NO_OPTION);
+                if (p == 0) {
+                    limpiarCampos();
+                }
+            } catch(Exception ex) {
+                JOptionPane.showMessageDialog(null, ex);
+            }
+        }
+        
+        if(vistaExtraviado.btn_prueba == e.getSource()){
+            try {
+                ArrayList<Persona> resultado = new Persona().getPersona();
+                for (int i = 0; i < resultado.size(); i++) {
+                    System.out.println(resultado.get(i).getRut());
+                    System.out.println(resultado.get(i).getNombres());
+                    System.out.println(resultado.get(i).getApellidos());
+                    System.out.println(resultado.get(i).getFijo());
+                    System.out.println(resultado.get(i).getMovil());
+                    System.out.println(resultado.get(i).getEmail());
+                    System.out.println(resultado.get(i).getDireccion());
+                }
             } catch(Exception ex) {
                 JOptionPane.showMessageDialog(null, ex);
             }

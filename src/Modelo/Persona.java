@@ -1,18 +1,98 @@
 package Modelo;
 
+import Datos.PersonaVO;
+import java.util.ArrayList;
+
 /**
  *
  * @author erik
  */
 public class Persona {
-    public void ingresarPersona(String rut, String nombre, String apellido, String fijo, String movil, String email, String direccion) {
-        PersonaVO personavo = new PersonaVO();
-        personavo.setId_persona(rut);
-        personavo.setNombre_per(nombre);
-        personavo.setApellido_per(apellido);
-        personavo.setFijo_per(fijo);
-        personavo.setMovil_per(movil);
-        personavo.setCorreo_per(email);
-        personavo.setDireccion_per(direccion);
+    private String rut;
+    private String nombres;
+    private String apellidos;
+    private String fijo;
+    private String movil;
+    private String email;
+    private String direccion;
+    public static ArrayList<Persona> persona = new ArrayList<>();
+
+    public Persona() {
+    }
+
+    public Persona(String rut, String nombres, String apellidos, String fijo, String movil, String email, String direccion) {
+        this.rut = rut;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.fijo = fijo;
+        this.movil = movil;
+        this.email = email;
+        this.direccion = direccion;
+        
+        persona.add(this);
+    }
+    
+    public String getRut() {
+        return rut;
+    }
+
+    public void setRut(String Rut) {
+        this.rut = Rut;
+    }
+
+    public String getNombres() {
+        return nombres;
+    }
+
+    public void setNombres(String nombres) {
+        this.nombres = nombres;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getFijo() {
+        return fijo;
+    }
+
+    public void setFijo(String fijo) {
+        this.fijo = fijo;
+    }
+
+    public String getMovil() {
+        return movil;
+    }
+
+    public void setMovil(String movil) {
+        this.movil = movil;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
+    }
+
+    public static ArrayList<Persona> getPersona() {
+        return persona;
+    }
+
+    public static void setPersona(ArrayList<Persona> persona) {
+        Persona.persona = persona;
     }
 }

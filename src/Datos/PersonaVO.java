@@ -3,14 +3,16 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Modelo;
+package Datos;
+
+import Modelo.Persona;
 
 /**
  *
  * @author DerKow
  */
 public class PersonaVO {
-    private String id_persona;
+private String id_persona;
     private String nombre_per;
     private String apellido_per;
     private String fijo_per;
@@ -18,6 +20,25 @@ public class PersonaVO {
     private String correo_per;
     private String direccion_per;
     
+    public PersonaVO(Persona persona){
+        this.id_persona = persona.getRut();
+        this.nombre_per = persona.getNombres();
+        this.apellido_per = persona.getApellidos();
+        this.fijo_per = persona.getFijo();
+        this.movil_per = persona.getMovil();
+        this.correo_per = persona.getEmail();
+        this.direccion_per = persona.getDireccion();
+    }
+    public PersonaVO(String id_persona, String nombre_per, String apellido_per, String fijo_per, String movil_per, String correo_per, String direccion_per) {
+        this.id_persona = id_persona;
+        this.nombre_per = nombre_per;
+        this.apellido_per = apellido_per;
+        this.fijo_per = fijo_per;
+        this.movil_per = movil_per;
+        this.correo_per = correo_per;
+        this.direccion_per = direccion_per;
+    }
+
     public PersonaVO(){
     }    
 
