@@ -1,16 +1,11 @@
 package Datos;
 
-import Modelo.Caso;
 import Modelo.Conexion;
-import Modelo.Extraviado;
-import Modelo.Persona;
 import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
-
-
 /**
  *
  * @author erik
@@ -25,13 +20,14 @@ public class CasoDAO {
     
     public boolean insertarCaso(CasoVO caso,ExtraviadoVO extraviado_,PersonaVO persona) {
         boolean rptRegistro = false;
+        int dato_=0;
         try {
             Connection accesoDB = conexion.getConexion();
 //            PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO caso(IDEXTRAVIADO,IDPERSONA,ESTADOCASO,FECHACASO) VALUES (?,?,?,?)");
             PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO `caso` (`IDCASO`, `IDEXTRAVIADO`, `IDPERSONA`, `ESTADOCASO`, `FECHACASO`) VALUES (?,?,?,?,?)");
-            String dato_ = verificarCasoExtraviado(extraviado_.getIdentificacion_ex());
+                dato_ = verificarCasoExtraviado(extraviado_.getIdentificacion_ex());
                 ps.setInt(1, 1);
-                ps.setString(2, dato_);
+                ps.setInt(2, dato_);
                 ps.setString(3, persona.getId_persona());
                 ps.setString(4, caso.getESTADOCASO());
                 ps.setDate(5, (Date) caso.getFECHACASO());
@@ -50,8 +46,8 @@ public class CasoDAO {
         return rptRegistro;
     }
     //************CORREGIR ESTO
-     public String verificarCasoExtraviado(String id) {
-        String resultado = "";
+     public int verificarCasoExtraviado(String id) {
+        int resultado=0;
         Connection accesoDB = conexion.getConexion();
         try {
             Statement stmt = accesoDB.createStatement();
@@ -62,14 +58,14 @@ public class CasoDAO {
             
 //            ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                resultado = rs.getString("idextraviado");
+                resultado = rs.getInt("idextraviado");
             }
             rs.close();
             conexion.Desconectar();
             return resultado;
             
         } catch (Exception e) {
-             return null;
+             return resultado;
         }
     }
     

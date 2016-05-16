@@ -1,13 +1,18 @@
 package Controlador;
 
+import Datos.CasoDAO;
+import Datos.CasoVO;
 import Modelo.Extraviado;
 import Datos.ExtraviadoDAO;
-import Datos.*;
-import Modelo.*;
+import Datos.ExtraviadoVO;
+import Datos.PersonaDAO;
+import Datos.PersonaVO;
+import Modelo.Caso;
+import Modelo.Persona;
+
 import Vista.S0_Principal;
 import Vista.S1_IngresarExtraviado;
 import Vista.S8_IngresarPersona;
-import com.sun.org.apache.bcel.internal.generic.AALOAD;
 import java.awt.event.*;
 import java.text.DateFormat;
 import java.text.ParseException;
@@ -28,7 +33,7 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
     
     CasoDAO caso_dao = new CasoDAO();
     
-    DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
+    DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
     Date dateobj = new Date();
 
     public CtrlIngExtraviado(S1_IngresarExtraviado vistaExtraviado, Extraviado modeloIngreso,Persona modeloPersona) {
@@ -40,9 +45,14 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         this.vistaExtraviado.btn_limpiar.addActionListener(this);
 //        this.vistaExtraviado.btn_volver.addActionListener(this);
         
+        // validadores
         this.vistaExtraviado.radio_rut.addActionListener(this);
         this.vistaExtraviado.radio_pasaporte.addActionListener(this);
         this.vistaExtraviado.radio_noAplica.addActionListener(this);
+        
+        this.vistaExtraviado.txt_nombre.addKeyListener(this);
+        this.vistaExtraviado.txt_apellidos.addKeyListener(this);
+        this.vistaExtraviado.txt_peso.addKeyListener(this);
         
     }
     CtrlIngPersona contra;
@@ -83,7 +93,6 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
                                     //paso a la principal
                                     aLaPrincipal();
                                 }
-
                             } else {
                                 JOptionPane.showMessageDialog(null, "Debe ingresar el rut.","Advertencia",JOptionPane.WARNING_MESSAGE);
                                 vistaExtraviado.txt_radioOption.requestFocus();
@@ -152,6 +161,7 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
 //            }
 //        }
 
+        //**************VALIDADORES DE CAMPOS
         /*habilita campo de texto rut,pasaporte,aplica al momento de seleccionar uno,sino queda desabilitado*/
         if (vistaExtraviado.radio_rut.isSelected()) {
             habilitarExtraviado(true);
@@ -167,7 +177,6 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
             habilitarExtraviado(false);
             vistaExtraviado.txt_radioOption.setText("");
         }
-        
     }
 
     public Object creaObjectExtraviado(int opcion){
@@ -312,7 +321,7 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         vistaExtraviado.txt_peso.setText("");
         vistaExtraviado.textarea_comentario.setText("");
         
-        
+        vistaExtraviado.txt_nombre.requestFocus();
         
     }
     

@@ -22,7 +22,7 @@ public class CtrlPrincipal implements ActionListener {
         this.ventanaPrincipal = vistaPrincipal;
         this.ventanaPrincipal.btn_ingresarExtraviado.addActionListener(this);
         
-//        this.ventanaPrincipal.btn_modificar.addActionListener(this);
+        this.ventanaPrincipal.btn_modificar.addActionListener(this);
     }
     
     public void iniciarPrincipal() {
@@ -45,12 +45,12 @@ public class CtrlPrincipal implements ActionListener {
             ventanaPrincipal.dispose();
             ctrlPersona.iniciarPersona();
         }
-//        if (ventanaPrincipal.btn_modificar == e.getSource()) {
-//            CasoDAO casodao = new CasoDAO();
-//            String gato = casodao.verificarCasoExtraviado("");
-//            System.out.println(gato);
-//            System.out.println(".");
-//        }
+        if (ventanaPrincipal.btn_modificar == e.getSource()) {
+            CasoDAO casodao = new CasoDAO();
+            int gato = casodao.verificarCasoExtraviado("No aplica");
+            System.out.println(gato);
+            System.out.println(".");
+        }
         
     }
 }
