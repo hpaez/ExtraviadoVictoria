@@ -38,6 +38,7 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         
         this.vistaExtraviado.btn_ingresar.addActionListener(this);
         this.vistaExtraviado.btn_limpiar.addActionListener(this);
+//        this.vistaExtraviado.btn_volver.addActionListener(this);
         
         this.vistaExtraviado.radio_rut.addActionListener(this);
         this.vistaExtraviado.radio_pasaporte.addActionListener(this);
@@ -136,8 +137,21 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
                 JOptionPane.showMessageDialog(null, ex);
             }
         }
-        
-        
+//        if (vistaExtraviado.btn_volver == e.getSource()) {
+//            try {
+//                int p = JOptionPane.showConfirmDialog(null, "¿Desea volver a la pantalla principal?", "Advertencia", JOptionPane.YES_NO_OPTION);
+//                if (p == 0) {
+//                    S8_IngresarPersona ing_persona = new S8_IngresarPersona();            
+//                    CtrlIngPersona ctrlPrincipal = new CtrlIngPersona(ing_persona, modeloPersona){ };
+//                    ctrlPrincipal.iniciarPersona();
+//                    vistaExtraviado.dispose();
+//                    vistaPersona.setVisible(false);
+//                }
+//                } catch(Exception ex) {
+//                JOptionPane.showMessageDialog(null, ex);
+//            }
+//        }
+
         /*habilita campo de texto rut,pasaporte,aplica al momento de seleccionar uno,sino queda desabilitado*/
         if (vistaExtraviado.radio_rut.isSelected()) {
             habilitarExtraviado(true);
@@ -297,6 +311,8 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         vistaExtraviado.txt_altura.setText("");
         vistaExtraviado.txt_peso.setText("");
         vistaExtraviado.textarea_comentario.setText("");
+        
+        
         
     }
     

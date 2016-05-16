@@ -31,6 +31,7 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
 
         jInternalFrame1 = new javax.swing.JInternalFrame();
         buttonGroup1 = new javax.swing.ButtonGroup();
+        jLabel2 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
@@ -58,6 +59,7 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
         combo_cPelo = new javax.swing.JComboBox();
         combo_contextura = new javax.swing.JComboBox();
         btn_ingresar = new javax.swing.JButton();
+        btn_volver = new javax.swing.JButton();
         btn_limpiar = new javax.swing.JButton();
 
         jInternalFrame1.setVisible(true);
@@ -72,6 +74,8 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
             jInternalFrame1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGap(0, 0, Short.MAX_VALUE)
         );
+
+        jLabel2.setText("jLabel2");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -106,7 +110,7 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
 
         jLabel14.setText("Color de Pelo");
 
-        jLabel15.setText("Estatura");
+        jLabel15.setText("Estatura (Mts.)");
 
         jLabel6.setText("Comentario");
 
@@ -116,15 +120,15 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
 
         jLabel16.setText("Contextura");
 
-        jLabel17.setText("Peso");
+        jLabel17.setText("Peso (Kg.)");
 
-        combo_cPiel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_cPiel.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Marfil blanca", "Pálida  ", "Pálida a beige", "moreno claro", "moreno oscuro" }));
 
-        combo_cOjos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_cOjos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Celeste", "Gris", "Verde", "Azul ", "café", "Negro parduzco" }));
 
-        combo_cPelo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_cPelo.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Rojo", "Rubio", "Castaño claro", "Castaño oscuro", "Negro" }));
 
-        combo_contextura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_contextura.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione", "Pequeña", "Mediana", "Grande" }));
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -158,9 +162,9 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
                                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(jPanel3Layout.createSequentialGroup()
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(combo_cPiel, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                             .addComponent(combo_cPelo, javax.swing.GroupLayout.Alignment.TRAILING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(combo_contextura, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                            .addComponent(combo_contextura, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(combo_cPiel, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jPanel3Layout.createSequentialGroup()
@@ -225,6 +229,8 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
 
         btn_ingresar.setText("Ingresar");
 
+        btn_volver.setText("< Volver");
+
         btn_limpiar.setText("Limpiar");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
@@ -236,8 +242,10 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(30, 30, 30)
-                        .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(btn_volver, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_limpiar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(48, 48, 48)
                         .addComponent(btn_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30))
                     .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -253,8 +261,9 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(btn_limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
-                    .addComponent(btn_ingresar, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
+                    .addComponent(btn_volver, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(btn_ingresar, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE)
+                    .addComponent(btn_limpiar, javax.swing.GroupLayout.DEFAULT_SIZE, 37, Short.MAX_VALUE))
                 .addContainerGap())
         );
 
@@ -293,6 +302,7 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btn_ingresar;
     public static javax.swing.JButton btn_limpiar;
+    public static javax.swing.JButton btn_volver;
     public static javax.swing.ButtonGroup buttonGroup1;
     public javax.swing.JComboBox combo_cOjos;
     public javax.swing.JComboBox combo_cPelo;
@@ -306,6 +316,7 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

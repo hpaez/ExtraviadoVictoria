@@ -41,8 +41,8 @@ public class CtrlPrincipal implements ActionListener {
             Persona persona = new Persona();
             S8_IngresarPersona vistaPersona = new S8_IngresarPersona();
             CtrlIngPersona ctrlPersona = new CtrlIngPersona(vistaPersona, persona) {};
-            
             ventanaPrincipal.setVisible(false);
+            ventanaPrincipal.dispose();
             ctrlPersona.iniciarPersona();
         }
 //        if (ventanaPrincipal.btn_modificar == e.getSource()) {

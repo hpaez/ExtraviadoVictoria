@@ -167,6 +167,8 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
         vistaPersona.txt_movil.setText("");
         vistaPersona.txt_email.setText("");
         vistaPersona.txt_direccion.setText("");
+        
+        vistaPersona.txt_rut.requestFocus();
     }
     
     public static boolean validarRut(String rut) {
