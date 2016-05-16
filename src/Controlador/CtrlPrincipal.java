@@ -3,6 +3,7 @@ package Controlador;
 import Vista.S0_Principal;
 import Vista.S8_IngresarPersona;
 import Controlador.Pantallas;
+import Datos.CasoDAO;
 import Modelo.Persona;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -20,6 +21,8 @@ public class CtrlPrincipal implements ActionListener {
     public CtrlPrincipal(S0_Principal vistaPrincipal) {
         this.ventanaPrincipal = vistaPrincipal;
         this.ventanaPrincipal.btn_ingresarExtraviado.addActionListener(this);
+        
+//        this.ventanaPrincipal.btn_modificar.addActionListener(this);
     }
     
     public void iniciarPrincipal() {
@@ -28,6 +31,8 @@ public class CtrlPrincipal implements ActionListener {
         ventanaPrincipal.setLocationRelativeTo(null);
         ventanaPrincipal.setVisible(true);
         ventanaPrincipal.setResizable(false);
+        
+        
     }
 
     @Override
@@ -40,6 +45,12 @@ public class CtrlPrincipal implements ActionListener {
             ventanaPrincipal.setVisible(false);
             ctrlPersona.iniciarPersona();
         }
+//        if (ventanaPrincipal.btn_modificar == e.getSource()) {
+//            CasoDAO casodao = new CasoDAO();
+//            String gato = casodao.verificarCasoExtraviado("");
+//            System.out.println(gato);
+//            System.out.println(".");
+//        }
         
     }
 }

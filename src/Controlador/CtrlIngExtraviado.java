@@ -25,6 +25,7 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
     
     PersonaDAO persona_dao = new PersonaDAO();
     ExtraviadoDAO extraviado_dao = new ExtraviadoDAO();
+    
     CasoDAO caso_dao = new CasoDAO();
     
     DateFormat df = new SimpleDateFormat("yyyy-MM-dd");
@@ -90,15 +91,15 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
                             JOptionPane.showMessageDialog(null, "El rut ingresado no es valido.","Advertencia",JOptionPane.WARNING_MESSAGE);
                             vistaExtraviado.txt_radioOption.requestFocus();
                         }
-                    } else if(vistaExtraviado.radio_pasaporte.isSelected() == true) {
-                        if(vistaExtraviado.txt_radioOption.getText().trim().equals("")){
+                    } else if(vistaExtraviado.radio_pasaporte.isSelected()) {
+                        if(!vistaExtraviado.txt_radioOption.getText().trim().equals("")){
                             int p = JOptionPane.showConfirmDialog(null, "¿Desea guardar los datos del extraviado?", "Advertencia", JOptionPane.YES_NO_OPTION);
                             if (p == 0) {
                             //*************PASAPORTE**********************************
                                 if (persona_dao.verificaPersona(modeloPersona.getRut())) {
-                                    realizarIngreso(1, (ExtraviadoVO) creaObjectExtraviado(1),modeloPersona,persona_dao);                             
+                                    realizarIngreso(1, (ExtraviadoVO) creaObjectExtraviado(2),modeloPersona,persona_dao);                             
                                 }else{
-                                    realizarIngreso(2, (ExtraviadoVO) creaObjectExtraviado(1),modeloPersona,persona_dao);                       
+                                    realizarIngreso(2, (ExtraviadoVO) creaObjectExtraviado(2),modeloPersona,persona_dao);                       
                                 }
                                 //paso a la principal
                                 aLaPrincipal();
@@ -157,12 +158,18 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
 
     public Object creaObjectExtraviado(int opcion){
             String id_="";
+            //noaplica
             if (opcion==3) {
                 id_ = "No aplica";
             }
+            //rut
             if (opcion==1) {
                  id_ = formatear(vistaExtraviado.txt_radioOption.getText().trim());
-            }  
+            }
+            //pasaporte
+            if (opcion==2) {
+                id_ = vistaExtraviado.txt_radioOption.getText().trim();
+            }
             Extraviado extraviado = new Extraviado(id_
             , vistaExtraviado.txt_nombre.getText().trim()
             , vistaExtraviado.txt_apellidos.getText().trim()
@@ -226,20 +233,22 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
     
     public void realizarIngreso(int opcion,ExtraviadoVO extraviado_vo,Persona persona,PersonaDAO persona_dao){
         PersonaVO persona_vo = new PersonaVO(modeloPersona);
+        
         if (opcion == 1) {
+            extraviado_dao.insertarExtraviado((ExtraviadoVO) extraviado_vo);
+            System.out.println(persona_vo.getId_persona());
+            System.out.println(extraviado_vo.getIdentificacion_ex());
+            caso_dao.insertarCaso((CasoVO)Caso_(), extraviado_vo, persona_vo);
             
-            if (extraviado_dao.insertarExtraviado((ExtraviadoVO) extraviado_vo)) {
-                JOptionPane.showMessageDialog(null, "Ingresado exitosamente");
-                caso_dao.insertarCaso(Caso_(), extraviado_vo, persona_vo);
-            }
-            
+            JOptionPane.showMessageDialog(null, "Ingresado exitosamente");            
         }
         if (opcion == 2){
             persona_dao.insertarPersona(persona_vo);
-            if (extraviado_dao.insertarExtraviado((ExtraviadoVO) extraviado_vo)) {
-                JOptionPane.showMessageDialog(null, "Ingresado exitosamente");
-            }
-            caso_dao.insertarCaso(Caso_(), extraviado_vo, persona_vo);
+            extraviado_dao.insertarExtraviado((ExtraviadoVO) extraviado_vo);
+            caso_dao.insertarCaso((CasoVO)Caso_(), extraviado_vo, persona_vo);
+            JOptionPane.showMessageDialog(null, "Ingresado exitosamente");
+            System.out.println(persona_vo.getId_persona());
+            System.out.println(extraviado_vo.getIdentificacion_ex());
         }
     }
     

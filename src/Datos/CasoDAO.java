@@ -8,6 +8,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Statement;
 
 
 /**
@@ -19,19 +20,21 @@ public class CasoDAO {
     
     public CasoDAO() {
         conexion = new Conexion();
+       
     }
     
-    public boolean insertarCaso(CasoVO caso,ExtraviadoVO extraviado,PersonaVO persona) {
+    public boolean insertarCaso(CasoVO caso,ExtraviadoVO extraviado_,PersonaVO persona) {
         boolean rptRegistro = false;
-        String dato="";
         try {
             Connection accesoDB = conexion.getConexion();
-            PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO caso(IDEXTRAVIADO,IDPERSONA,ESTADOCASO,FECHACASO) VALUES (?,?,?,?)");
-            dato = verificarCasoExtraviado(extraviado.getIdentificacion_ex());
-                ps.setString(1, dato);
-                ps.setString(2, persona.getId_persona());
-                ps.setString(3, caso.getESTADOCASO());
-                ps.setDate(4, (Date) caso.getFECHACASO());
+//            PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO caso(IDEXTRAVIADO,IDPERSONA,ESTADOCASO,FECHACASO) VALUES (?,?,?,?)");
+            PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO `caso` (`IDCASO`, `IDEXTRAVIADO`, `IDPERSONA`, `ESTADOCASO`, `FECHACASO`) VALUES (?,?,?,?,?)");
+            String dato_ = verificarCasoExtraviado(extraviado_.getIdentificacion_ex());
+                ps.setInt(1, 1);
+                ps.setString(2, dato_);
+                ps.setString(3, persona.getId_persona());
+                ps.setString(4, caso.getESTADOCASO());
+                ps.setDate(5, (Date) caso.getFECHACASO());
               
                 int numFilasAfectadas = ps.executeUpdate();
                 ps.close();
@@ -51,14 +54,17 @@ public class CasoDAO {
         String resultado = "";
         Connection accesoDB = conexion.getConexion();
         try {
-            PreparedStatement ps = accesoDB.prepareStatement("SELECT idextraviado FROM extraviado WHERE IDENTIFICACIONEXTRAVIAD = '?'");
-            ps.setString(1, id);
+            Statement stmt = accesoDB.createStatement();
+//            PreparedStatement ps = accesoDB.prepareStatement("SELECT idextraviado FROM extraviado WHERE IDENTIFICACIONEXTRAVIAD = '?'");
+//            ps.setString(1, id);
+//            
+            ResultSet rs = stmt.executeQuery("SELECT idextraviado FROM extraviado WHERE IDENTIFICACIONEXTRAVIAD = '"+id+"'");
             
-            ResultSet rs = ps.executeQuery();
+//            ResultSet rs = ps.executeQuery();
             while(rs.next()){
-                resultado = rs.getString(1);
+                resultado = rs.getString("idextraviado");
             }
-            ps.close();
+            rs.close();
             conexion.Desconectar();
             return resultado;
             
