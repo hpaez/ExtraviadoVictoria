@@ -2,17 +2,10 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
-<<<<<<< HEAD
         <group>
-            <file>file:/D:/Hugo%20Paez/Documents/NetBeansProjects/ExtraviadoVictoria/src/Modelo/Persona.java</file>
             <file>file:/D:/Hugo%20Paez/Documents/NetBeansProjects/ExtraviadoVictoria/src/Controlador/CtrlIngExtraviado.java</file>
-            <file>file:/D:/Hugo%20Paez/Documents/NetBeansProjects/ExtraviadoVictoria/src/Datos/PersonaVO.java</file>
-            <file>file:/D:/Hugo%20Paez/Documents/NetBeansProjects/ExtraviadoVictoria/src/Vista/S8_IngresarPersona.java</file>
-            <file>file:/D:/Hugo%20Paez/Documents/NetBeansProjects/ExtraviadoVictoria/src/Controlador/CtrlIngPersona.java</file>
-            <file>file:/D:/Hugo%20Paez/Documents/NetBeansProjects/ExtraviadoVictoria/src/Datos/PersonaDAO.java</file>
+            <file>file:/D:/Hugo%20Paez/Documents/NetBeansProjects/ExtraviadoVictoria/src/Datos/ExtraviadoDAO.java</file>
+            <file>file:/D:/Hugo%20Paez/Documents/NetBeansProjects/ExtraviadoVictoria/src/Datos/CasoDAO.java</file>
         </group>
-=======
-        <group/>
->>>>>>> bc32a2968740a81b8787319a5710de330e214225
     </open-files>
 </project-private>
