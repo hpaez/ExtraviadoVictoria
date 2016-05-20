@@ -29,6 +29,7 @@ public class PersonaVO {
         this.correo_per = persona.getEmail();
         this.direccion_per = persona.getDireccion();
     }
+    
     public PersonaVO(String id_persona, String nombre_per, String apellido_per, String fijo_per, String movil_per, String correo_per, String direccion_per) {
         this.id_persona = id_persona;
         this.nombre_per = nombre_per;

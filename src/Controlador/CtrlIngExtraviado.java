@@ -33,9 +33,9 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
     
     CasoDAO caso_dao = new CasoDAO();
     
-    DateFormat df = new SimpleDateFormat("YYYY-MM-DD");
-    Date dateobj = new Date();
-
+    java.util.Date fechaActual = new java.util.Date();
+    java.sql.Date sqlDate = new java.sql.Date(fechaActual.getTime());
+    
     public CtrlIngExtraviado(S1_IngresarExtraviado vistaExtraviado, Extraviado modeloIngreso,Persona modeloPersona) {
         this.modeloExtraviado   = modeloIngreso;
         this.vistaExtraviado    = vistaExtraviado;
@@ -86,9 +86,9 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
                                 if (p == 0) {
                                     //**** RUT SELECCIONADO
                                     if (persona_dao.verificaPersona(modeloPersona.getRut())) {
-                                        realizarIngreso(1, (ExtraviadoVO) creaObjectExtraviado(1),modeloPersona,persona_dao);                             
+                                        realizarIngreso(1, (ExtraviadoVO) creaObjectExtraviado(1),modeloPersona,persona_dao,(CasoVO)Caso_());                            
                                     }else{
-                                        realizarIngreso(2, (ExtraviadoVO) creaObjectExtraviado(1),modeloPersona,persona_dao);                       
+                                        realizarIngreso(2, (ExtraviadoVO) creaObjectExtraviado(1),modeloPersona,persona_dao,(CasoVO)Caso_());                     
                                     }
                                     //paso a la principal
                                     aLaPrincipal();
@@ -107,9 +107,9 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
                             if (p == 0) {
                             //*************PASAPORTE**********************************
                                 if (persona_dao.verificaPersona(modeloPersona.getRut())) {
-                                    realizarIngreso(1, (ExtraviadoVO) creaObjectExtraviado(2),modeloPersona,persona_dao);                             
+                                    realizarIngreso(1, (ExtraviadoVO) creaObjectExtraviado(2),modeloPersona,persona_dao,(CasoVO)Caso_());                             
                                 }else{
-                                    realizarIngreso(2, (ExtraviadoVO) creaObjectExtraviado(2),modeloPersona,persona_dao);                       
+                                    realizarIngreso(2, (ExtraviadoVO) creaObjectExtraviado(2),modeloPersona,persona_dao,(CasoVO)Caso_());                     
                                 }
                                 //paso a la principal
                                 aLaPrincipal();
@@ -122,9 +122,9 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
                         if (p == 0) {
                             //*************************NO APLICA PASAPORTE O RUT
                             if (persona_dao.verificaPersona(modeloPersona.getRut())) {
-                                realizarIngreso(1, (ExtraviadoVO) creaObjectExtraviado(3),modeloPersona,persona_dao);                             
+                                realizarIngreso(1, (ExtraviadoVO) creaObjectExtraviado(3),modeloPersona,persona_dao,(CasoVO)Caso_());                             
                             }else{
-                                realizarIngreso(2, (ExtraviadoVO) creaObjectExtraviado(3),modeloPersona,persona_dao);                       
+                                realizarIngreso(2, (ExtraviadoVO) creaObjectExtraviado(3),modeloPersona,persona_dao,(CasoVO)Caso_());                       
                             }
                             //paso a la principal
                             aLaPrincipal();
@@ -220,29 +220,22 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         return extraviado_vo;
     }
 
-    public CasoVO Caso_(){
+    public Object Caso_(){
         String id_="";
             if (vistaExtraviado.txt_radioOption.getText().trim().equals("")){
                 id_="No aplica";
             }else{
                 id_=vistaExtraviado.txt_radioOption.getText().trim();
             }
-            try {
+        try {
             String estado="Desaparecido";
         
-            Date fecha = df.parse(dateobj.toString());
+            Caso caso = new Caso(estado,sqlDate);
             
-            Caso caso = new Caso(estado,fecha);
+            CasoVO caso_vo = new CasoVO(1, id_, modeloPersona.getRut(), caso.getEstado(), caso.getFecha());
             
-            CasoVO caso_vo = new CasoVO();
-            
-            caso_vo.setIDCASO(1);
-            caso_vo.setIDEXTRAVIADO(id_);
-            caso_vo.setESTADOCASO(caso.getEstado());
-            caso_vo.setFECHACASO(caso.getFecha());
-            caso_vo.setIDPERSONA(modeloPersona.getRut());
             return caso_vo;
-        } catch (ParseException ex) {
+        }catch (Exception ex){
             return null;
         }
     }
@@ -254,14 +247,14 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         vistaExtraviado.dispose();
     }
     
-    public void realizarIngreso(int opcion,ExtraviadoVO extraviado_vo,Persona persona,PersonaDAO persona_dao){
+    public void realizarIngreso(int opcion,ExtraviadoVO extraviado_vo,Persona persona,PersonaDAO persona_dao,CasoVO caso_vo){
         PersonaVO persona_vo = new PersonaVO(modeloPersona);
         
         if (opcion == 1) {
             extraviado_dao.insertarExtraviado((ExtraviadoVO) extraviado_vo);
             System.out.println(persona_vo.getId_persona());
             System.out.println(extraviado_vo.getIdentificacion_ex());
-            caso_dao.insertarCaso((CasoVO)Caso_(), extraviado_vo, persona_vo);
+            caso_dao.insertarCaso(caso_vo, extraviado_vo, persona_vo);
             
             JOptionPane.showMessageDialog(null, "Ingresado exitosamente");            
         }

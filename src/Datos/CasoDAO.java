@@ -20,17 +20,16 @@ public class CasoDAO {
     
     public boolean insertarCaso(CasoVO caso,ExtraviadoVO extraviado_,PersonaVO persona) {
         boolean rptRegistro = false;
-        int dato_=0;
+        int dato_;
         try {
             Connection accesoDB = conexion.getConexion();
 //            PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO caso(IDEXTRAVIADO,IDPERSONA,ESTADOCASO,FECHACASO) VALUES (?,?,?,?)");
-            PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO `caso` (`IDCASO`, `IDEXTRAVIADO`, `IDPERSONA`, `ESTADOCASO`, `FECHACASO`) VALUES (?,?,?,?,?)");
+            PreparedStatement ps = accesoDB.prepareStatement("INSERT INTO `caso` (`IDEXTRAVIADO`, `IDPERSONA`, `ESTADOCASO`, `FECHACASO`) VALUES (?,?,?,?)");
                 dato_ = verificarCasoExtraviado(extraviado_.getIdentificacion_ex());
-                ps.setInt(1, 1);
-                ps.setInt(2, dato_);
-                ps.setString(3, persona.getId_persona());
-                ps.setString(4, caso.getESTADOCASO());
-                ps.setDate(5, (Date) caso.getFECHACASO());
+                ps.setInt(1, dato_);
+                ps.setString(2, persona.getId_persona());
+                ps.setString(3, caso.getESTADOCASO());
+                ps.setDate(4, (Date) caso.getFECHACASO());
               
                 int numFilasAfectadas = ps.executeUpdate();
                 ps.close();
