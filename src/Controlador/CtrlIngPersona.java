@@ -11,7 +11,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
-import java.util.ArrayList;
+
 import javax.swing.JOptionPane;
 
 /**
@@ -20,8 +20,9 @@ import javax.swing.JOptionPane;
  */
 public class CtrlIngPersona implements ActionListener,KeyListener {
     private S8_IngresarPersona vistaPersona;
-    public CtrlIngPersona ctrlPersona;
-    public Persona persona;
+    private CtrlIngPersona ctrlPersona;
+    private Persona persona;
+    private Validador validar;
     
     public CtrlIngPersona(S8_IngresarPersona vistaPersona, Persona persona) {
         this.vistaPersona = vistaPersona;
@@ -32,9 +33,13 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
         this.vistaPersona.btn_volver.addActionListener(this);
         
         //key listeners
+        this.vistaPersona.txt_rut.addKeyListener(this);
+        this.vistaPersona.txt_nombres.addKeyListener(this);
+        this.vistaPersona.txt_apellidos.addKeyListener(this);
         this.vistaPersona.txt_fijo.addKeyListener(this);
         this.vistaPersona.txt_movil.addKeyListener(this);
-        
+        this.vistaPersona.txt_email.addKeyListener(this);
+        this.vistaPersona.txt_direccion.addKeyListener(this);  
     }
     
     public void iniciarPersona() {
@@ -55,10 +60,10 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
                     !vistaPersona.txt_direccion.getText().trim().equals("") &&
                     (!vistaPersona.txt_fijo.getText().trim().equals("") ||
                     !vistaPersona.txt_movil.getText().trim().equals(""))){
-                    if(validarRut(vistaPersona.txt_rut.getText())){
+                    if(validar.validarRut(vistaPersona.txt_rut.getText())){
                         int p = JOptionPane.showConfirmDialog(null, "¿Desea pasar a la siguente pantalla?", "Advertencia", JOptionPane.YES_NO_OPTION);
                         if (p == 0) {
-                            String rut = CtrlIngExtraviado.formatear(vistaPersona.txt_rut.getText());
+                            String rut = validar.formatear(vistaPersona.txt_rut.getText());
                             String nombre = vistaPersona.txt_nombres.getText().trim();
                             String apellido = vistaPersona.txt_apellidos.getText();
                             String fijo = vistaPersona.txt_fijo.getText();
@@ -114,21 +119,39 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
     @Override
     public void keyTyped(KeyEvent e) {
         //solo numeros para campo telefono y movil
-        try{
-            if (vistaPersona.txt_fijo == e.getSource() || vistaPersona.txt_movil == e.getSource()) {
-                try{
-                    if (!(Character.isDigit(e.getKeyChar()))){
-                        e.consume();
-                    }
-                }catch(Exception ex){
-                }
+        if (vistaPersona.txt_fijo == e.getSource() || vistaPersona.txt_movil == e.getSource()) {
+            if (!(Character.isDigit(e.getKeyChar()))){
+                e.consume();
             }
-        }catch (Exception ex){
-        }    
-        //limite de caracteres
-//        if (_campo.length() == _limitecaracteres) {
-//            e.consume();
-//        }
+        }
+        //limite de campo rut
+        if (vistaPersona.txt_rut.getText().trim().length() == 12) {
+            e.consume();
+        }
+        //limite de campo nombre
+        if (vistaPersona.txt_nombres.getText().trim().length() == 20) {
+            e.consume();
+        }
+        //limite de campo apellido
+        if (vistaPersona.txt_apellidos.getText().trim().length() == 30) {
+            e.consume();
+        }
+        //limite de campo telefono fijo
+        if (vistaPersona.txt_fijo.getText().trim().length() == 15) {
+            e.consume();
+        }
+        //limite de campo telefono movil
+        if (vistaPersona.txt_movil.getText().trim().length() == 15) {
+            e.consume();
+        }
+        //limite de campo telefono email
+        if (vistaPersona.txt_email.getText().trim().length() == 90) {
+            e.consume();
+        }
+        //limite de campo telefono direccion
+        if (vistaPersona.txt_direccion.getText().trim().length() == 90) {
+            e.consume();
+        }
     }
 
     @Override
@@ -144,20 +167,7 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
         }catch(Exception ex) {
         }
     }
-    
-    public boolean ingresarPersona(PersonaVO personavo) {
-        boolean resp = false;
-        PersonaDAO personadao = new PersonaDAO();
-        if (personadao.insertarPersona(personavo)){
-            JOptionPane.showMessageDialog(null, "Se ingreso la persona exitosamente.","Información",JOptionPane.INFORMATION_MESSAGE);
-            resp = true;
-        }else{
-            JOptionPane.showMessageDialog(null, "No se pudo ingresar.","Advertencia",JOptionPane.WARNING_MESSAGE);
-            resp = false;
-        }
-        return resp;
-    }
-    
+
     public void limpiarCampos(){     
         /*datos solicitante*/
         vistaPersona.txt_rut.setText("");
@@ -171,25 +181,4 @@ public class CtrlIngPersona implements ActionListener,KeyListener {
         vistaPersona.txt_rut.requestFocus();
     }
     
-    public static boolean validarRut(String rut) {
-        boolean validacion = false;
-        try {
-            rut = rut.toUpperCase();
-            rut = rut.replace(".", "");
-            rut = rut.replace("-", "");
-            int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
-
-            char dv = rut.charAt(rut.length() - 1);
-
-            int m = 0, s = 1;
-            for (; rutAux != 0; rutAux /= 10) {
-                s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
-            }
-            if (dv == (char) (s != 0 ? s + 47 : 75)) {
-                validacion = true;
-            }
-        } catch(Exception e) {
-        }
-        return validacion;
-    }
 }

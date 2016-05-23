@@ -12,21 +12,16 @@ import Modelo.Persona;
 
 import Vista.S0_Principal;
 import Vista.S1_IngresarExtraviado;
-import Vista.S8_IngresarPersona;
 import java.awt.event.*;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 public class CtrlIngExtraviado implements ActionListener,KeyListener {
     private S1_IngresarExtraviado vistaExtraviado;
-    private S8_IngresarPersona vistaPersona;
     private Extraviado modeloExtraviado;
     private CtrlIngExtraviado control_ex;
     private Persona modeloPersona;
+    private Validador validar;
     
     PersonaDAO persona_dao = new PersonaDAO();
     ExtraviadoDAO extraviado_dao = new ExtraviadoDAO();
@@ -53,9 +48,10 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         this.vistaExtraviado.txt_nombre.addKeyListener(this);
         this.vistaExtraviado.txt_apellidos.addKeyListener(this);
         this.vistaExtraviado.txt_peso.addKeyListener(this);
-        
+        this.vistaExtraviado.txt_altura.addKeyListener(this);
+        this.vistaExtraviado.txt_radioOption.addKeyListener(this);
     }
-    CtrlIngPersona contra;
+
     public void iniciarExtraviado() {
         vistaExtraviado.setTitle("Ingresar Extraviado - Sistema de Búsqueda de Extraviado");
         vistaExtraviado.pack();
@@ -81,7 +77,7 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
          
                     if(vistaExtraviado.radio_rut.isSelected()){
                         if(!vistaExtraviado.txt_radioOption.getText().trim().equals("")){
-                            if(validarRut(vistaExtraviado.txt_radioOption.getText().trim())){
+                            if(validar.validarRut(vistaExtraviado.txt_radioOption.getText().trim())){
                                 int p = JOptionPane.showConfirmDialog(null, "¿Desea guardar los datos del extraviado?", "Advertencia", JOptionPane.YES_NO_OPTION);
                                 if (p == 0) {
                                     //**** RUT SELECCIONADO
@@ -187,7 +183,7 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
             }
             //rut
             if (opcion==1) {
-                 id_ = formatear(vistaExtraviado.txt_radioOption.getText().trim());
+                 id_ = validar.formatear(vistaExtraviado.txt_radioOption.getText().trim());
             }
             //pasaporte
             if (opcion==2) {
@@ -268,33 +264,6 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         }
     }
     
-    @Override
-    public void keyTyped(KeyEvent e) {
-        try {
-            
-        }catch(Exception ex) {
-            
-        }
-    }
-
-    @Override
-    public void keyPressed(KeyEvent e) {
-        try {
-            
-        }catch(Exception ex) {
-            
-        }
-    }
-
-    @Override
-    public void keyReleased(KeyEvent e) {
-        try {
-            
-        }catch(Exception ex) {
-            
-        }
-    }
-    
     /*limpia todos los campos del formulario*/
     public void limpiarCampos(){      
         /*datos extraviado*/
@@ -322,51 +291,61 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
         vistaExtraviado.txt_radioOption.setEnabled(sw);
     }
     
-    public static boolean validarRut(String rut) {
-        boolean validacion = false;
+    @Override
+    public void keyTyped(KeyEvent e) {
         try {
-            rut = rut.toUpperCase();
-            rut = rut.replace(".", "");
-            rut = rut.replace("-", "");
-            int rutAux = Integer.parseInt(rut.substring(0, rut.length() - 1));
-
-            char dv = rut.charAt(rut.length() - 1);
-
-            int m = 0, s = 1;
-            for (; rutAux != 0; rutAux /= 10) {
-                s = (s + rutAux % 10 * (9 - m++ % 6)) % 11;
+            //limite de campo de texto del radio button
+            if (vistaExtraviado.txt_radioOption.getText().trim().length() == 50) {
+                e.consume();
             }
-            if (dv == (char) (s != 0 ? s + 47 : 75)) {
-                validacion = true;
+            //limite de campo nombre
+            if (vistaExtraviado.txt_nombre.getText().trim().length() == 50) {
+                e.consume();
             }
-        } catch(Exception e) {
-        }
-        return validacion;
-    }
-    
-    /**
-     * Le da formato a un rut, concatenándole puntos y guión.
-     * @param rut Rut a formatear.
-     * @return Un nuevo String, con el rut formateado.
-     */
-    static public String formatear(String rut){
-        int cont=0;
-        String format;
-        if(rut.length() == 0){
-            return "";
-        }else{
-            rut = rut.replace(".", "");
-            rut = rut.replace("-", "");
-            format = "-"+rut.substring(rut.length()-1);
-            for(int i = rut.length()-2;i>=0;i--){
-                format = rut.substring(i, i+1)+format;
-                cont++;
-                if(cont == 3 && i != 0){
-                    format = "."+format;
-                    cont = 0;
+            //limite de campo apellido
+            if (vistaExtraviado.txt_apellidos.getText().trim().length() == 50) {
+                e.consume();
+            }
+            //limite de campo estatura
+            if (vistaExtraviado.txt_altura.getText().trim().length() == 5) {
+                e.consume();
+            }
+            //limite de campo peso
+            if (vistaExtraviado.txt_peso.getText().trim().length() == 4) {
+                e.consume();
+            }
+            //solo numeros para campo peso
+            if (vistaExtraviado.txt_peso == e.getSource()) {
+                if (!(Character.isDigit(e.getKeyChar()))){
+                    e.consume();
                 }
             }
-            return format;
+            //limite de area texto comentario
+            if (vistaExtraviado.textarea_comentario.getText().trim().length() == 400) {
+                e.consume();
+            }
+            
+        }catch(Exception ex) {
+            
         }
     }
+
+    @Override
+    public void keyPressed(KeyEvent e) {
+        try {
+            
+        }catch(Exception ex) {
+            
+        }
+    }
+
+    @Override
+    public void keyReleased(KeyEvent e) {
+        try {
+            
+        }catch(Exception ex) {
+            
+        }
+    }
+    
 }
