@@ -59,7 +59,6 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
     public void iniciarExtraviado() {
         vistaExtraviado.setTitle("Ingresar Extraviado - Sistema de Búsqueda de Extraviado");
         vistaExtraviado.pack();
-        vistaExtraviado.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         vistaExtraviado.setLocationRelativeTo(null);
         vistaExtraviado.setVisible(true);
         vistaExtraviado.setResizable(false);
@@ -221,18 +220,18 @@ public class CtrlIngExtraviado implements ActionListener,KeyListener {
     }
 
     public Object Caso_(){
-        String id_="";
+        String id="";
             if (vistaExtraviado.txt_radioOption.getText().trim().equals("")){
-                id_="No aplica";
+                id="No aplica";
             }else{
-                id_=vistaExtraviado.txt_radioOption.getText().trim();
+                id=vistaExtraviado.txt_radioOption.getText().trim();
             }
         try {
             String estado="Desaparecido";
         
             Caso caso = new Caso(estado,sqlDate);
             
-            CasoVO caso_vo = new CasoVO(1, id_, modeloPersona.getRut(), caso.getEstado(), caso.getFecha());
+            CasoVO caso_vo = new CasoVO(1, id, modeloPersona.getRut(), caso.getEstado(), caso.getFecha());
             
             return caso_vo;
         }catch (Exception ex){
