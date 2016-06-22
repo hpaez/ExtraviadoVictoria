@@ -1,11 +1,6 @@
 package Vista;
 
-
 import javax.swing.JOptionPane;
-import Controlador.CtrlIngPersona;
-import Modelo.Persona;
-
-
 
 /**
  *
@@ -291,14 +286,14 @@ public class S1_IngresarExtraviado extends javax.swing.JFrame {
         // TODO add your handling code here:
         salir();
     }//GEN-LAST:event_formWindowClosing
-  
+
     private void salir() {
         int p = JOptionPane.showConfirmDialog(null, "¿Desea salir de la aplicación?", "Salir", JOptionPane.YES_NO_OPTION);
         if (p == 0) {
             System.exit(0);
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public static javax.swing.JButton btn_ingresar;
     public static javax.swing.JButton btn_limpiar;

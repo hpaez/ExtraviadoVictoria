@@ -7,6 +7,7 @@ import java.util.Date;
  * @author erik
  */
 public class Caso {
+
     private String estado;
     private Date fecha;
 
@@ -34,6 +35,4 @@ public class Caso {
         this.fecha = fecha;
     }
 
-    
-        
 }

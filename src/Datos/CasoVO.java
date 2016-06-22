@@ -7,6 +7,7 @@ import java.util.Date;
  * @author erik
  */
 public class CasoVO {
+
     private int IDCASO;
     private String IDEXTRAVIADO;
     private String IDPERSONA;
@@ -63,6 +64,5 @@ public class CasoVO {
     public void setFECHACASO(Date FECHACASO) {
         this.FECHACASO = FECHACASO;
     }
-    
-    
+
 }

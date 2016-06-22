@@ -5,6 +5,7 @@ package Datos;
  * @author DerKow
  */
 public class ExtraviadoVO {
+
     private int id_extraviado;
     private String id_persona;
     private String identificacion_ex;
@@ -131,6 +132,4 @@ public class ExtraviadoVO {
     public void setComentario_ex(String comentario_ex) {
         this.comentario_ex = comentario_ex;
     }
-
-    
 }

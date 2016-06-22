@@ -1,6 +1,5 @@
 package Modelo;
 
-import Datos.PersonaVO;
 import java.util.ArrayList;
 
 /**
@@ -32,10 +31,10 @@ public class Persona {
         this.movil = movil;
         this.email = email;
         this.direccion = direccion;
-        
+
         persona.add(this);
     }
-    
+
     public String getRut() {
         return rut;
     }
@@ -99,9 +98,4 @@ public class Persona {
     public static void setPersona(ArrayList<Persona> persona) {
         Persona.persona = persona;
     }
-    
-    
-
 }
-
-

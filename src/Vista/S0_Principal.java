@@ -18,7 +18,7 @@ public class S0_Principal extends javax.swing.JFrame {
      */
     public S0_Principal() {
         initComponents();
-        
+
         this.setLocationRelativeTo(null);
         this.setResizable(false);
     }
@@ -202,7 +202,7 @@ public class S0_Principal extends javax.swing.JFrame {
             System.exit(0);
         }
     }
-    
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton btn_ingresarExtraviado;
     public javax.swing.JButton btn_modificar;

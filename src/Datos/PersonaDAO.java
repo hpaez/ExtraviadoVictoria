@@ -1,20 +1,20 @@
 package Datos;
 
-import Modelo.Conexion;
+import AccesoDato.Conexion;
 import java.sql.*;
-import java.util.ArrayList;
 
 /**
  *
  * @author DerKow
  */
 public class PersonaDAO {
+
     Conexion conexion;
-    
+
     public PersonaDAO() {
         conexion = new Conexion();
     }
-    
+
     public boolean insertarPersona(PersonaVO persona) {
         boolean resultado = false;
         try {
@@ -27,12 +27,12 @@ public class PersonaDAO {
             ps.setString(5, persona.getMovil_per());
             ps.setString(6, persona.getCorreo_per());
             ps.setString(7, persona.getDireccion_per());
-            
+
             int numFilasAfectadas = ps.executeUpdate();
             ps.close();
             conexion.Desconectar();
-            
-            if(numFilasAfectadas>0){
+
+            if (numFilasAfectadas > 0) {
                 resultado = true;
             }
         } catch (Exception e) {
@@ -40,27 +40,27 @@ public class PersonaDAO {
         }
         return resultado;
     }
-    
+
     public boolean verificaPersona(String id) {
         boolean resultado = false;
         Connection accesoDB = conexion.getConexion();
         try {
             PreparedStatement ps = accesoDB.prepareStatement("SELECT * FROM persona WHERE IDPERSONA=?");
             ps.setString(1, id);
-            
+
             int numFilasAfectadas = ps.executeUpdate();
             ps.close();
             conexion.Desconectar();
-            
-            if(numFilasAfectadas>0){
+
+            if (numFilasAfectadas > 0) {
                 resultado = true;
             }
         } catch (Exception e) {
-                resultado = false;
+            resultado = false;
         }
         return resultado;
     }
-    
+
     public boolean editarPersona(PersonaVO persona) {
         boolean resultado = false;
         try {
@@ -76,13 +76,13 @@ public class PersonaDAO {
             int numFilasAfectadas = ps.executeUpdate();
             ps.close();
             conexion.Desconectar();
-            
-            if(numFilasAfectadas>0){
+
+            if (numFilasAfectadas > 0) {
                 resultado = true;
             }
         } catch (Exception e) {
             resultado = false;
         }
-        return resultado;  
+        return resultado;
     }
 }

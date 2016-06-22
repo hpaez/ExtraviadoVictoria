@@ -5,6 +5,7 @@ package Modelo;
  * @author DerFlow
  */
 public class Extraviado {
+
     private String identificador;
     private String nombre;
     private String apellido;
@@ -15,7 +16,7 @@ public class Extraviado {
     private int contextura;
     private int peso;
     private String comentario;
-    
+
     public Extraviado() {
     }
 
